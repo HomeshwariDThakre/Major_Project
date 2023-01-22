@@ -29,7 +29,7 @@ class AboutUsState extends State<AboutUs> {
             height: 300,
             width: width,
             decoration: const BoxDecoration(
-              color: Colors.green,
+              color: Colors.brown,
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -56,46 +56,135 @@ class AboutUsState extends State<AboutUs> {
           ),
           const SizedBox(height: 30),
 
-          // Padding(
-          //     padding: const EdgeInsets.fromLTRB(10, 0, 0, 10),
-          //     child: Card(
-          //         elevation: 5,
-          //         child: Padding(
-          //           padding: const EdgeInsets.all(10),
-          //           child: Text(
-          //             'Recently we have observed the emerging concept of smart farming that makes agriculture more efficient and effective with the help of high-precision algorithms.Our App allows the users to estimate whether the use of pesticides will damage their crop or not . This app also gives user important information like the weather , soil types and tips for good farming . ',
-          //             style: GoogleFonts.poppins(
-          //                 fontSize: 16, color: Colors.black),
-          //             textAlign: TextAlign.center,
-          //           ),
-          //         ))),
-          // const SizedBox(
-          //   height: 10,
-          // ),
-          // const SizedBox(
-          //   height: 60,
-          // ),
-          // Padding(
-          //   padding: const EdgeInsets.all(15),
-          //   child: Align(
-          //     alignment: Alignment.bottomRight,
-          //     child: GestureDetector(
-          //       onTap: () {
-          //         Navigator.push(context,
-          //             MaterialPageRoute(builder: (context) => TeamInfo()));
-          //       },
-          //       child: Container(
-          //         height: 70,
-          //         width: 70,
-          //         decoration: BoxDecoration(
-          //             color: Colors.black,
-          //             borderRadius: BorderRadius.circular(35),
-          //             image: const DecorationImage(
-          //                 image: AssetImage('assets/titans.jpeg'))),
-          //       ),
-          //     ),
-          //   ),
-          // ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+            child: Text(
+              'Contact Us',
+              style: GoogleFonts.poppins(fontSize: 22, color: Colors.black),
+            ),
+          ),
+          const SizedBox(height: 10),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+            child: Row(
+              children: [
+                const Icon(
+                  Icons.email,
+                  color: Colors.green,
+                ),
+                Text(
+                  ' Email:  ',
+                  style: GoogleFonts.poppins(fontSize: 18, color: Colors.black),
+                ),
+                InkWell(
+                  onTap: () async {
+                    _launchemailURL('kisan.rakshak@gov.in');
+                    setState(() {});
+                  },
+                  child: const Text(
+                    'kisan.rakshak@gov.in',
+                    style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        color: Colors.blue,
+                        fontSize: 18),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 30),
+
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+            child: Text(
+              'Important Helplines',
+              style: GoogleFonts.poppins(fontSize: 22, color: Colors.black),
+            ),
+          ),
+          const SizedBox(height: 15),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+            child: Row(
+              children: [
+                const Icon(
+                  Icons.phone,
+                  color: Colors.green,
+                ),
+                Text(
+                  ' Kisan Helpline Number: ',
+                  style: GoogleFonts.poppins(fontSize: 18, color: Colors.black),
+                ),
+                InkWell(
+                  onTap: () => launch("tel://1800-180-1551"),
+                  child: const Text(
+                    '1800-180-1551',
+                    style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        color: Colors.blue,
+                        fontSize: 18),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 15),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+            child: Row(
+              children: [
+                const Icon(
+                  Icons.phone,
+                  color: Colors.green,
+                ),
+                Text(
+                  ' National Helpline: ',
+                  style: GoogleFonts.poppins(fontSize: 18, color: Colors.black),
+                ),
+                InkWell(
+                  onTap: () => launch("tel://1800-120-4049"),
+                  child: const Text(
+                    '1800-120-4049',
+                    style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        color: Colors.blue,
+                        fontSize: 18),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          //  Padding(
+          //      padding: const EdgeInsets.fromLTRB(10, 0,0,10),
+          //      child: Card(
+          //        elevation: 5,
+          //          child: Padding(
+          //              padding: const EdgeInsets.all(10),
+          //              child: Text('Recently we have observed the emerging concept of smart farming that makes agriculture more efficient and effective with the help of high-precision algorithms.Our App allows the users to estimate whether the use of pesticides will damage their crop or not . This app also gives user important information like the weather , soil types and tips for good farming . ',style: GoogleFonts.poppins(fontSize:16,color: Colors.black),textAlign: TextAlign.center,),))),
+          // // const SizedBox(height: 10,),'
+          const SizedBox(
+            height: 60,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(15),
+            child: Align(
+              alignment: Alignment.bottomRight,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => TeamInfo()));
+                },
+                child: Container(
+                  height: 70,
+                  width: 70,
+                  decoration: BoxDecoration(
+                      color: Colors.black,
+                      borderRadius: BorderRadius.circular(35),
+                      image: const DecorationImage(
+                          image: AssetImage('assets/titans.jpeg'))),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );

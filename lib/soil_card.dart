@@ -40,19 +40,19 @@ class SoilCard extends StatelessWidget {
           'assets/detail/black1.jpg',
           fit: BoxFit.fill,
         )),
-    // Detail(
-    //     name: 'Red and Yellow Soil',
-    //     about:
-    //         'Red and Yellow soil are encountered over extensive nonalluvial tracts of peninsular India and are made up of such acidic rocks as granite, gneiss, and schist. They develop in areas in which rainfall leaches soluble minerals out of the ground and results in a loss of chemically basic constituents; a corresponding proportional increase in oxidized iron imparts a reddish hue to many such soils. Hence, they are commonly described as ferralitic soils.',
-    //     found: 'Deccan plateau, Western Ghat, Orissa, and Chhattisgarh.',
-    //     character:
-    //         'The soils are red due to iron oxide in them. The soils form when metamorphic rocks weather away. Rich in potash. Somewhat acidic. Poor in nitrogen, magnesium, lime, phosphorus, and organic matter. Soils are sandy.',
-    //     crop:
-    //         'Groundnut, potato, maize/corn, rice, ragi, wheat, millets, pulses, sugarcane, oilseeds, and fruits like citrus, orange, mango, and vegetables.',
-    //     photo: Image.asset(
-    //       'assets/detail/red-yellow1.jpg',
-    //       fit: BoxFit.fill,
-    //     )),
+    Detail(
+        name: 'Red and Yellow Soil',
+        about:
+            'Red and Yellow soil are encountered over extensive nonalluvial tracts of peninsular India and are made up of such acidic rocks as granite, gneiss, and schist. They develop in areas in which rainfall leaches soluble minerals out of the ground and results in a loss of chemically basic constituents; a corresponding proportional increase in oxidized iron imparts a reddish hue to many such soils. Hence, they are commonly described as ferralitic soils.',
+        found: 'Deccan plateau, Western Ghat, Orissa, and Chhattisgarh.',
+        character:
+            'The soils are red due to iron oxide in them. The soils form when metamorphic rocks weather away. Rich in potash. Somewhat acidic. Poor in nitrogen, magnesium, lime, phosphorus, and organic matter. Soils are sandy.',
+        crop:
+            'Groundnut, potato, maize/corn, rice, ragi, wheat, millets, pulses, sugarcane, oilseeds, and fruits like citrus, orange, mango, and vegetables.',
+        photo: Image.asset(
+          'assets/detail/red-yellow1.jpg',
+          fit: BoxFit.fill,
+        )),
     Detail(
         name: 'Laterite Soil',
         about:
@@ -67,47 +67,47 @@ class SoilCard extends StatelessWidget {
           'assets/detail/laterite1.jpg',
           fit: BoxFit.fill,
         )),
-    // Detail(
-    //     name: 'Arid Soil',
-    //     about:
-    //         'Arid soils are a soil order in USDA soil taxonomy. Arid soils form in an arid or semi-arid climate. Arid soils dominate the deserts and xeric shrublands, which occupy about one-third of the Earths land surface. Arid soils have a very low concentration of organic matter, reflecting the paucity of vegetative production on these dry soils. Water deficiency is the major defining characteristic of Arid soils. ',
-    //     found: 'It is mainly found in regions of Aravalli west, Rajasthan.',
-    //     character:
-    //         'Sandy soils with low clay content. Poor in organic matter and moisture because arid regions are usually dry. Saline in nature with low nitrogen and high salt. Rich in plant food. Their color varies between red and brown.',
-    //     crop:
-    //         'Saline resistant and drought tolerant crops are suitable. Barley, maize, wheat, millets, cotton, and pulses.',
-    //     photo: Image.asset(
-    //       'assets/detail/arid1.jpg',
-    //       fit: BoxFit.fill,
-    //     )),
-    // Detail(
-    //     name: 'Mountain and Forest Soil',
-    //     about:
-    //         'Forest and mountain soils occur not only at higher elevations, but also at lower elevations that have sufficient rainfall. They are formed by the deposition of organic matter derived from forest growth and are heterogeneous in nature, depending on parent rocks, ground configuration, and climate. They are generally infertile for the production of field crops, but useful for supplying forest products, such as timber and fuel.',
-    //     found:
-    //         'Himalayan area, Western and Eastern Ghats, and a few regions of the Peninsular Plateau.',
-    //     character:
-    //         'Acidic soil, rich in organic matter. Poor in lime, phosphorus, and potash. Good fertilization is required in these soils.',
-    //     crop:
-    //         'Wheat, barley, maize, tea, coffee, spices, tropical and temperate fruits',
-    //     photo: Image.asset(
-    //       'assets/detail/mountain1.jpg',
-    //       fit: BoxFit.fill,
-    //     )),
-    // Detail(
-    //     name: 'Desert Soil',
-    //     about:
-    //         'Desert soil is mostly sandy soil (90–95%) found in low-rainfall regions. It has a low content of nitrogen and organic matter with very high calcium carbonate and phosphate, thus making it infertile. The amount of calcium is 10 times higher in the lower layer than in the topsoil. The availability of nitrogen in the form of nitrates, using fertilizer, and proper irrigation, in addition to the already-present phosphates makes it useful.',
-    //     found:
-    //         'Areas of Rajasthan, Rann of Kutch of Gujarat, adjoining regions of Haryana and Punjab, and coastal areas of Kerala, Tamil Nadu, and Orissa. It covers about 4% of the total Indian land.',
-    //     character:
-    //         'Dry and sandy soil with some quantity of nitrogen present in it.',
-    //     crop:
-    //         'Only drought tolerant crops are suitable. Two examples are barley and millet.',
-    //     photo: Image.asset(
-    //       'assets/detail/desert1.jpg',
-    //       fit: BoxFit.fill,
-    //     ))
+    Detail(
+        name: 'Arid Soil',
+        about:
+            'Arid soils are a soil order in USDA soil taxonomy. Arid soils form in an arid or semi-arid climate. Arid soils dominate the deserts and xeric shrublands, which occupy about one-third of the Earths land surface. Arid soils have a very low concentration of organic matter, reflecting the paucity of vegetative production on these dry soils. Water deficiency is the major defining characteristic of Arid soils. ',
+        found: 'It is mainly found in regions of Aravalli west, Rajasthan.',
+        character:
+            'Sandy soils with low clay content. Poor in organic matter and moisture because arid regions are usually dry. Saline in nature with low nitrogen and high salt. Rich in plant food. Their color varies between red and brown.',
+        crop:
+            'Saline resistant and drought tolerant crops are suitable. Barley, maize, wheat, millets, cotton, and pulses.',
+        photo: Image.asset(
+          'assets/detail/arid1.jpg',
+          fit: BoxFit.fill,
+        )),
+    Detail(
+        name: 'Mountain and Forest Soil',
+        about:
+            'Forest and mountain soils occur not only at higher elevations, but also at lower elevations that have sufficient rainfall. They are formed by the deposition of organic matter derived from forest growth and are heterogeneous in nature, depending on parent rocks, ground configuration, and climate. They are generally infertile for the production of field crops, but useful for supplying forest products, such as timber and fuel.',
+        found:
+            'Himalayan area, Western and Eastern Ghats, and a few regions of the Peninsular Plateau.',
+        character:
+            'Acidic soil, rich in organic matter. Poor in lime, phosphorus, and potash. Good fertilization is required in these soils.',
+        crop:
+            'Wheat, barley, maize, tea, coffee, spices, tropical and temperate fruits',
+        photo: Image.asset(
+          'assets/detail/mountain1.jpg',
+          fit: BoxFit.fill,
+        )),
+    Detail(
+        name: 'Desert Soil',
+        about:
+            'Desert soil is mostly sandy soil (90–95%) found in low-rainfall regions. It has a low content of nitrogen and organic matter with very high calcium carbonate and phosphate, thus making it infertile. The amount of calcium is 10 times higher in the lower layer than in the topsoil. The availability of nitrogen in the form of nitrates, using fertilizer, and proper irrigation, in addition to the already-present phosphates makes it useful.',
+        found:
+            'Areas of Rajasthan, Rann of Kutch of Gujarat, adjoining regions of Haryana and Punjab, and coastal areas of Kerala, Tamil Nadu, and Orissa. It covers about 4% of the total Indian land.',
+        character:
+            'Dry and sandy soil with some quantity of nitrogen present in it.',
+        crop:
+            'Only drought tolerant crops are suitable. Two examples are barley and millet.',
+        photo: Image.asset(
+          'assets/detail/desert1.jpg',
+          fit: BoxFit.fill,
+        ))
   ];
 
   @override

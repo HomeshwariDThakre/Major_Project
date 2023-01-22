@@ -9,7 +9,7 @@ class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green[200],
+      backgroundColor: Colors.brown[200],
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(
@@ -75,7 +75,7 @@ class DetailPage extends StatelessWidget {
                 ),
                 Card(
                   elevation: 10.0,
-                  color: Color.fromARGB(255, 70, 121, 165),
+                  color: Colors.green,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0)),
                   child: Column(

@@ -99,7 +99,7 @@ class _TipsState extends State<Tips> {
       child: Container(
         height: MediaQuery.of(context).size.height - 80,
         width: MediaQuery.of(context).size.width,
-        color: Colors.green[200],
+        color: Colors.pink[200],
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
