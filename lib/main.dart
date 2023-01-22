@@ -1,4 +1,5 @@
 import 'package:Bhoomi_Seva/firebase_options.dart';
+import 'package:Bhoomi_Seva/firestpage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'navbar.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
         Locale('hin', 'India'), // hindi, no country code
         Locale('mar', 'India'), // mar, no country code
       ],
-      home: KisanRakshak(),
+      home: FirstPage(),
     );
   }
 }
