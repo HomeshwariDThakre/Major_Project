@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "972053044129",
+    "project_id": "bhoomiseva-cf0ae",
+    "storage_bucket": "bhoomiseva-cf0ae.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:972053044129:android:ef6580ae79abe58f6f09e0",
+        "android_client_info": {
+          "package_name": "com.example.kisan_rakshak"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "972053044129-r9rgamfe7gttqfa8b26a1eqe39pqlef0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACdwA37yMHfqqpNJnTNWkZG4UOFHb_dh4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "972053044129-r9rgamfe7gttqfa8b26a1eqe39pqlef0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,8 +1,13 @@
+import 'package:Bhoomi_Seva/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'navbar.dart';
 //import 'package:flutter_localizations/flutter_localizations.dart';
 
-void main() {
+void main() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MyApp());
 }
 
