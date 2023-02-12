@@ -1,34 +1,41 @@
 {
   "project_info": {
-    "project_number": "972053044129",
-    "project_id": "bhoomiseva-cf0ae",
-    "storage_bucket": "bhoomiseva-cf0ae.appspot.com"
+    "project_number": "599258986458",
+    "project_id": "bhoomiseva-15c31",
+    "storage_bucket": "bhoomiseva-15c31.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:972053044129:android:ef6580ae79abe58f6f09e0",
+        "mobilesdk_app_id": "1:599258986458:android:e004c18fd5b5390a6132e3",
         "android_client_info": {
           "package_name": "com.example.kisan_rakshak"
         }
       },
       "oauth_client": [
         {
-          "client_id": "972053044129-r9rgamfe7gttqfa8b26a1eqe39pqlef0.apps.googleusercontent.com",
+          "client_id": "599258986458-n084jl72755ed40d3i79snu72th3hdlm.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyACdwA37yMHfqqpNJnTNWkZG4UOFHb_dh4"
+          "current_key": "AIzaSyCjMmBduD9B6W_p6SLkdrcga2Cm_XQgA3Y"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "972053044129-r9rgamfe7gttqfa8b26a1eqe39pqlef0.apps.googleusercontent.com",
+              "client_id": "599258986458-n084jl72755ed40d3i79snu72th3hdlm.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "599258986458-ik99gr3rhjtlkfts6bgjqihssii0k57h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.bhoomiseva"
+              }
             }
           ]
         }

@@ -1,14 +1,15 @@
 import 'package:Bhoomi_Seva/firebase_options.dart';
-import 'package:Bhoomi_Seva/firestpage.dart';
+import 'package:Bhoomi_Seva/firstpage.dart';
+import 'package:Bhoomi_Seva/splashscreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'navbar.dart';
 //import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  // await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
   runApp(MyApp());
 }
 
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
         Locale('hin', 'India'), // hindi, no country code
         Locale('mar', 'India'), // mar, no country code
       ],
-      home: FirstPage(),
+      home: SplashScreen(),
     );
   }
 }
