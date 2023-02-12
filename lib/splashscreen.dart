@@ -25,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
       // backgroundColor: Color.fromRGBO(248, 255, 242, 1),
       navigateWhere: true,
       navigateRoute: FirstPage(), 
-      imageSrc: 'assets/tree.png',
+      imageSrc: 'assets/CircularLogo.png',
     );
   }
 }
