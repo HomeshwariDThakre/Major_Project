@@ -12,6 +12,22 @@ class FirstPage extends StatefulWidget {
   @override
   State<FirstPage> createState() => _FirstPageState();
 }
+singin() async {
+  GoogleSignIn _singIn = GoogleSignIn();
+  try {
+    var result = await _singIn.signIn();
+    if (result == null) {
+      return;
+    }
+    final userdata = await result.authentication;
+    final credential = GoogleAuthProvider.credential(
+        accessToken: userdata.accessToken, idToken: userdata.accessToken);
+    final finalresult =
+        await FirebaseAuth.instance.signInWithCredential(credential);
+  } catch (e) {
+    print(e);
+  };
+}
 
 class _FirstPageState extends State<FirstPage> {
   @override
@@ -73,19 +89,22 @@ class _FirstPageState extends State<FirstPage> {
                   //  MaterialPageRoute(builder: (context) => Weather()));
                   MaterialPageRoute(builder: (context) => Weather()));
             },
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Image.asset("assets/Google.png"),
-                SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  "Google Sign-in",
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.w400),
-                ),
-              ],
+            child: InkWell(
+              onTap: ()=>singin(),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Image.asset("assets/Google.png"),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    "Google Sign-in",
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.w400),
+                  ),
+                ],
+              ),
             ),
           ),
         ],
