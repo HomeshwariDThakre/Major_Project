@@ -112,16 +112,19 @@ class AboutUsState extends State<AboutUs> {
                 ),
                 Text(
                   ' Kisan Helpline Number: ',
-                  style: GoogleFonts.poppins(fontSize: 18, color: Colors.black),
+                  style: GoogleFonts.poppins(fontSize: 17, color: Colors.black),
                 ),
                 InkWell(
                   onTap: () => launch("tel://1800-180-1551"),
-                  child: const Text(
-                    '1800-180-1551',
-                    style: TextStyle(
-                        decoration: TextDecoration.underline,
-                        color: Colors.blue,
-                        fontSize: 18),
+                  child: Expanded(
+                    child: const Text(
+                      '1800-180-1551',
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                          decoration: TextDecoration.underline,
+                          color: Colors.blue,
+                          fontSize: 17),
+                    ),
                   ),
                 ),
               ],
@@ -138,7 +141,7 @@ class AboutUsState extends State<AboutUs> {
                 ),
                 Text(
                   ' National Helpline: ',
-                  style: GoogleFonts.poppins(fontSize: 18, color: Colors.black),
+                  style: GoogleFonts.poppins(fontSize: 17, color: Colors.black),
                 ),
                 InkWell(
                   onTap: () => launch("tel://1800-120-4049"),
@@ -147,7 +150,7 @@ class AboutUsState extends State<AboutUs> {
                     style: TextStyle(
                         decoration: TextDecoration.underline,
                         color: Colors.blue,
-                        fontSize: 18),
+                        fontSize: 17),
                   ),
                 ),
               ],

@@ -1,19 +1,20 @@
-import 'package:Bhoomi_Seva/firebase_options.dart';
-import 'package:Bhoomi_Seva/firstpage.dart';
-import 'package:Bhoomi_Seva/splashscreen.dart';
+import 'package:bhoomi_seva/splashscreen.dart';
+import 'package:bhoomi_seva/weather.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'navbar.dart';
 //import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
-  // await Firebase.initializeApp(
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   //   options: DefaultFirebaseOptions.currentPlatform,
-  // );
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  var weather;
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -35,6 +36,22 @@ class MyApp extends StatelessWidget {
         Locale('mar', 'India'), // mar, no country code
       ],
       home: SplashScreen(),
+      // home: StreamBuilder<User?>(
+      //     builder: (BuildContext context, AsyncSnapshot snapshot) {
+      //   if (snapshot.hasError) {
+      //     return Text(snapshot.error.toString());
+      //   }
+      //   if (snapshot.connectionState == ConnectionState.active) {
+      //     if (snapshot.data == null) {
+      //       return SplashScreen();
+      //     } else {
+      //       weather = Weather();
+      //       //title: FirebaseAuth.instance.currentUser!.displayName!);
+      //       return weather;
+      //     }
+      //   }
+      //   return Text("error");
+      // })
     );
   }
 }
