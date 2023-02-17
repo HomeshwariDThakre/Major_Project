@@ -19,8 +19,8 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SplashScreenView(
-      duration: const Duration(milliseconds: 1300),
+    return const SplashScreenView(
+      duration:  Duration(milliseconds: 1300),
       backgroundColor: Colors.white,
       //backgroundColor: Colors.white,
       logoSize: 800,

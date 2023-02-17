@@ -1,10 +1,10 @@
-import 'package:bhoomi_seva/navbar.dart';
+// import 'package:bhoomi_seva/navbar.dart';
 import 'package:bhoomi_seva/weather.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+// import 'package:flutter/src/widgets/container.dart';
+// import 'package:flutter/src/widgets/framework.dart';
+// import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class FirstPage extends StatefulWidget {
@@ -26,7 +26,7 @@ singin() async {
         await FirebaseAuth.instance.signInWithCredential(credential);
   } catch (e) {
     print(e);
-  };
+  }
 }
 
 class _FirstPageState extends State<FirstPage> {
