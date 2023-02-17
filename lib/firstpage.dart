@@ -23,7 +23,8 @@ singin() async {
     final credential = GoogleAuthProvider.credential(
         accessToken: userdata.accessToken, idToken: userdata.accessToken);
     final finalresult =
-        await FirebaseAuth.instance.signInWithCredential(credential);
+        await FirebaseAuth.instance.signInWithCredential(credential).whenComplete(() => Weather());
+    
   } catch (e) {
     print(e);
   }
