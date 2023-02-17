@@ -39,8 +39,8 @@ dependencies:
   http: any
   flutter:
    sdk: flutter 
+ 
 
-  firebase_core: ^2.4.1
    #firebase_auth: ^1.1.1
    #google_sign_in: ^5.2.1
 
@@ -55,7 +55,8 @@ dependencies:
   #firebase_core: ^2.4.1
   flutter_svg: ^2.0.0+1
   tbib_splash_screen: ^0.0.6
-  firebase_auth: ^4.2.6
+  firebase_core: ^2.6.1
+  firebase_auth: ^4.2.8
   google_sign_in: ^5.4.4
 
   #Google Sign-in

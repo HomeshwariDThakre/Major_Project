@@ -13,7 +13,6 @@ void main() async {
   runApp(MyApp());
 }
 
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -22,10 +21,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Bhoomi_Seva',
-      
       theme: ThemeData(
-                primarySwatch: Colors.green,
-//         visualDensity: VisualDensity.adaptivePlatformDensity,
+        primarySwatch: Colors.green,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: const SplashScreen(),
     );

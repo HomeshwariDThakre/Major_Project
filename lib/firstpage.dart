@@ -1,17 +1,20 @@
 // import 'package:bhoomi_seva/navbar.dart';
 import 'package:bhoomi_seva/weather.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+//import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 // import 'package:flutter/src/widgets/container.dart';
 // import 'package:flutter/src/widgets/framework.dart';
 // import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+//import 'package:google_sign_in/google_sign_in.dart';
 
 class FirstPage extends StatefulWidget {
   const FirstPage({super.key});
   @override
   State<FirstPage> createState() => _FirstPageState();
 }
+
 singin() async {
   GoogleSignIn _singIn = GoogleSignIn();
   try {
@@ -90,7 +93,7 @@ class _FirstPageState extends State<FirstPage> {
                   MaterialPageRoute(builder: (context) => Weather()));
             },
             child: InkWell(
-              onTap: ()=>singin(),
+              onTap: () => singin(),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
