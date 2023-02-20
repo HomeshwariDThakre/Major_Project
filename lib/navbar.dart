@@ -10,19 +10,16 @@ import 'weather.dart';
 
 class KisanRakshak extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    return KisanRakshakState();
-  }
+  State<StatefulWidget> createState() => KisanRakshakState();
 }
 
 class KisanRakshakState extends State<KisanRakshak> {
   int currentIndex = 0;
   final List<Widget> _pages = [
     Weather(),
-    SoilList(),
-    Helper(),
-    Tips(),
+    const SoilList(),
+    const Helper(),
+    const Tips(),
     AboutUs(),
   ];
   setBottomBarIndex(index) {

@@ -1,4 +1,5 @@
 // import 'package:bhoomi_seva/navbar.dart';
+import 'package:bhoomi_seva/navbar.dart';
 import 'package:bhoomi_seva/weather.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 //import 'package:firebase_auth/firebase_auth.dart';
@@ -15,24 +16,45 @@ class FirstPage extends StatefulWidget {
   State<FirstPage> createState() => _FirstPageState();
 }
 
-singin() async {
-  GoogleSignIn _singIn = GoogleSignIn();
-  try {
-    var result = await _singIn.signIn();
-    if (result == null) {
-      return;
-    }
-    final userdata = await result.authentication;
-    final credential = GoogleAuthProvider.credential(
-        accessToken: userdata.accessToken, idToken: userdata.accessToken);
-    final finalresult =
-        await FirebaseAuth.instance.signInWithCredential(credential);
-  } catch (e) {
-    print(e);
-  }
-}
-
 class _FirstPageState extends State<FirstPage> {
+  Future<void> singin() async {
+    //Create an instance of firebase auth and google sign in
+    FirebaseAuth auth = FirebaseAuth.instance;
+    final GoogleSignIn googleSignIn = GoogleSignIn();
+    //Trigger the authentication flow
+    final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+    //Obtain the auth details from the request
+    final GoogleSignInAuthentication googleAuth =
+        await googleUser!.authentication;
+    //Create a new credentials
+    final AuthCredential credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+    //Sign in the user wih the credentials
+    final UserCredential userCredential =
+        await auth.signInWithCredential(credential);
+
+    // GoogleSignIn _singIn = GoogleSignIn();
+    // try {
+    //   var result = await _singIn.signIn();
+    //   if (result == null) {
+    //     return;
+    //   }
+    //   final userdata = await result.authentication;
+    //   final credential = GoogleAuthProvider.credential(
+    //       accessToken: userdata.accessToken, idToken: userdata.accessToken);
+    //   final finalresult =
+    //       await FirebaseAuth.instance.signInWithCredential(credential);
+    //   print("Result $result");
+    //   // var displayName;
+    //   print(result.displayName);
+    //   print(result.email);
+    // } catch (e) {
+    //   print(e);
+    // }
+  }
+
   @override
   Widget build(BuildContext context) {
     // var backgroundColor2 = #F8FFF2;
@@ -86,28 +108,25 @@ class _FirstPageState extends State<FirstPage> {
                 foregroundColor: Colors.black,
                 elevation: 0),
             onPressed: () async {
-              await firebase_services().signInWithGoogle();
+              //await firebase_services().signInWithGoogle();
               //  signInWithGoogle();
               Navigator.of(context).push(
                   //  MaterialPageRoute(builder: (context) => Weather()));
-                  MaterialPageRoute(builder: (context) => Weather()));
+                  MaterialPageRoute(builder: (context) => KisanRakshak()));
             },
-            child: InkWell(
-              onTap: () => singin(),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Image.asset("assets/Google.png"),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    "Google Sign-in",
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.w400),
-                  ),
-                ],
-              ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Image.asset("assets/Google.png"),
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  "Google Sign-in",
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.w400),
+                ),
+              ],
             ),
           ),
         ],

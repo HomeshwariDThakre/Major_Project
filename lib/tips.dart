@@ -1,8 +1,12 @@
+import 'package:bhoomi_seva/model/tipsmodel.dart';
+import 'package:bhoomi_seva/tipscard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gradient_colors/flutter_gradient_colors.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Tips extends StatefulWidget {
+  const Tips({super.key});
   @override
   _TipsState createState() => _TipsState();
 }
@@ -117,6 +121,26 @@ class _TipsState extends State<Tips> {
                       fontWeight: FontWeight.w500),
                 ),
               ),
+              // StreamBuilder(
+              //     stream:
+              //         FirebaseFirestore.instance.collection("Tips").snapshots(),
+              //     builder: (context, snapshot) {
+              //       if (snapshot.hasError) {
+              //         return const Text('Something went wrong');
+              //       }
+              //       if (snapshot.hasData && snapshot.data!.docs.isNotEmpty) {
+              //         List tipsdata = List.from(snapshot.data!.docs
+              //             .map((doc) => TipsModel.fromSnapshot(doc)));
+              //         return ListView.builder(
+              //             itemCount: tipsdata.length,
+              //             itemBuilder: (context, index) {
+              //               return TipsCard(
+              //                 info: tipsdata[index],
+              //               );
+              //             });
+              //       }
+              //       return const Center(child: Text("No Data"));
+              //     })
               Column(
                 children: infos.map((info) => infoTemplate(info)).toList(),
               ),

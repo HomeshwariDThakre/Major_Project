@@ -111,7 +111,7 @@ class AboutUsState extends State<AboutUs> {
                   color: Colors.green,
                 ),
                 Text(
-                  ' Kisan Helpline Number: ',
+                  ' Bhoomi Helpline Number: ',
                   style: GoogleFonts.poppins(fontSize: 17, color: Colors.black),
                 ),
                 InkWell(

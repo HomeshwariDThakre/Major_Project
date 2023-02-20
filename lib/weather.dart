@@ -43,14 +43,14 @@ class WeatherState extends State<Weather> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      height: 40,
+                      height: 36,
                     ),
                     Padding(
-                        padding: EdgeInsets.all(25),
+                        padding: EdgeInsets.all(20),
                         child: Text(
                           "Weather",
                           style: GoogleFonts.poppins(
-                              fontSize: 40,
+                              fontSize: 36,
                               color: Colors.white,
                               fontWeight: FontWeight.w500),
                         )),
@@ -58,8 +58,8 @@ class WeatherState extends State<Weather> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Container(
-                            height: 150,
-                            width: 150,
+                            height: 140,
+                            width: 140,
                             child: Image.asset(
                               getWeatherIcon(weather[0].id),
                               fit: BoxFit.fill,
@@ -100,7 +100,7 @@ class WeatherState extends State<Weather> {
                             Text(
                               "${(weather[0].humidity).toStringAsFixed(1)}%",
                               style: GoogleFonts.poppins(
-                                  fontSize: 50, color: Colors.white),
+                                  fontSize: 44, color: Colors.white),
                             ),
                           ],
                         ),
@@ -117,7 +117,7 @@ class WeatherState extends State<Weather> {
                             Text(
                               "${(weather[0].pressure)}",
                               style: GoogleFonts.poppins(
-                                  fontSize: 46, color: Colors.white),
+                                  fontSize: 44, color: Colors.white),
                             ),
                           ],
                         ),

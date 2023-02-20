@@ -1,9 +1,10 @@
+import 'package:bhoomi_seva/model/soilmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'soil.dart';
 
 class DetailPage extends StatelessWidget {
-  final Detail detail;
+  final SoilDataModel detail;
   const DetailPage({required this.detail});
 
   @override
@@ -19,7 +20,7 @@ class DetailPage extends StatelessWidget {
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: Text(
-          detail.name,
+          detail.name.toString(),
           style: GoogleFonts.poppins(fontSize: 25.0, color: Colors.black),
         ),
         backgroundColor: Colors.green[200],
@@ -35,7 +36,7 @@ class DetailPage extends StatelessWidget {
                 Container(
                   height: 200,
                   width: 350,
-                  child: detail.photo,
+                  child: Image.network(detail.image.toString()),
                 ),
                 const SizedBox(
                   height: 15.0,
@@ -60,7 +61,7 @@ class DetailPage extends StatelessWidget {
                         padding:
                             const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 10.0),
                         child: Text(
-                          detail.about,
+                          detail.about.toString(),
                           style: GoogleFonts.poppins(
                             color: Colors.white,
                             fontSize: 15.0,
@@ -92,7 +93,7 @@ class DetailPage extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 8.0),
                         child: Text(
-                          detail.found,
+                          detail.foundIn.toString(),
                           style: GoogleFonts.poppins(
                             color: Colors.white,
                             fontSize: 15.0,
@@ -124,7 +125,7 @@ class DetailPage extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 8.0),
                         child: Text(
-                          detail.character,
+                          detail.characteristics.toString(),
                           style: GoogleFonts.poppins(
                             color: Colors.white,
                             fontSize: 15.0,
@@ -156,7 +157,7 @@ class DetailPage extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 8.0),
                         child: Text(
-                          detail.crop,
+                          detail.suitableCrops.toString(),
                           style: GoogleFonts.poppins(
                             color: Colors.white,
                             fontSize: 15.0,

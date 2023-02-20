@@ -1,3 +1,4 @@
+import 'package:bhoomi_seva/model/soilmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'detail_page.dart';
@@ -8,7 +9,7 @@ class SoilCard extends StatelessWidget {
   //   Key? key,
   // }) : super(key: key);
 
-  final Soil soil;
+  final SoilDataModel soil;
   SoilCard({Key? key, required this.soil}) : super(key: key);
 
   List<Detail> details = [
@@ -127,14 +128,17 @@ class SoilCard extends StatelessWidget {
               children: [
                 ListTile(
                   title: Text(
-                    soil.title,
+                    soil.name.toString(),
                     style: GoogleFonts.poppins(
                       color: Colors.white,
                       fontSize: 20.0,
                     ),
                   ),
                 ),
-                Container(height: 175, width: 300, child: soil.image),
+                Container(
+                    height: 175,
+                    width: 300,
+                    child: Image.network(soil.mainimage.toString())),
                 const SizedBox(
                   height: 5.0,
                 ),
@@ -148,7 +152,7 @@ class SoilCard extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                     builder: (context) => DetailPage(
-                          detail: details[soil.index],
+                          detail: soil,
                         )),
               );
             },
