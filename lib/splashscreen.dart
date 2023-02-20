@@ -20,14 +20,14 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return const SplashScreenView(
-      duration:  Duration(milliseconds: 1300),
+      duration: Duration(milliseconds: 1300),
       backgroundColor: Colors.white,
       //backgroundColor: Colors.white,
       logoSize: 800,
       //backgroundColor: const Color.fromRGBO(248, 255, 242, 1),
       navigateWhere: true,
       navigateRoute: FirstPage(),
-      imageSrc: 'assets/CircularLogo1.png',
+      imageSrc: 'assets/abc.png',
     );
   }
 }

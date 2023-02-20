@@ -16,6 +16,24 @@ class FirstPage extends StatefulWidget {
   State<FirstPage> createState() => _FirstPageState();
 }
 
+singin() async {
+  GoogleSignIn _singIn = GoogleSignIn();
+  try {
+    var result = await _singIn.signIn();
+    if (result == null) {
+      return;
+    }
+    final userdata = await result.authentication;
+    final credential = GoogleAuthProvider.credential(
+        accessToken: userdata.accessToken, idToken: userdata.accessToken);
+    final finalresult = await FirebaseAuth.instance
+        .signInWithCredential(credential)
+        .whenComplete(() => Weather());
+  } catch (e) {
+    print(e);
+  }
+}
+
 class _FirstPageState extends State<FirstPage> {
   Future<void> singin() async {
     //Create an instance of firebase auth and google sign in
@@ -61,40 +79,43 @@ class _FirstPageState extends State<FirstPage> {
     //var backgroundColor;
     // ignore: prefer_const_constructors
     return Scaffold(
-      backgroundColor: Color.fromRGBO(248, 255, 242, 1),
+      backgroundColor: Colors.green[200],
       // backgroundColor: rgb(248,255,242);
       // backgroundColor: Color.fromRGBO(248, 255, 242, 0),
       body: Column(
         children: [
           Align(
               alignment: Alignment.topRight,
-              child: Image.asset("assets/Language.png")),
-          SizedBox(
-            height: 50,
+              child: Image.asset("assets/Language1.png")),
+          const SizedBox(
+            height: 40,
           ),
           Container(
-              height: 200,
-              width: 200,
+              height: 235,
+              width: 235,
               child: Image.asset(
                 "assets/Login1.png",
                 fit: BoxFit.fill,
               )),
-          Padding(
-            padding: const EdgeInsets.only(top: 50, bottom: 50),
+          const Padding(
+            padding: EdgeInsets.only(top: 60, bottom: 10),
             child: Text(
-              "Welcome to Bho🌎mi Seva",
+              "Welcome to BHO🌎MI SEVA ",
               //  semanticsLabel: "Info about the app in 1-2 lines",
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 26, fontWeight: FontWeight.w400),
+              style: TextStyle(
+                fontSize: 26,
+                fontWeight: FontWeight.w400,
+              ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 5, bottom: 50),
+          const Padding(
+            padding: EdgeInsets.only(top: 0, bottom: 65),
             child: Text(
-              "Info about the app in 1-2 lines",
+              "To forget how to dig the earth and tend the soil is to forget ourselves.",
               //  semanticsLabel: "Info about the app in 1-2 lines",
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.w400),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
             ),
           ),
           // CircleAvatar(
@@ -103,7 +124,7 @@ class _FirstPageState extends State<FirstPage> {
           // ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-                backgroundColor: Color.fromRGBO(248, 255, 242, 1),
+                backgroundColor: Colors.green[200],
                 //backgroundColor: Colors.white,
                 foregroundColor: Colors.black,
                 elevation: 0),
@@ -118,11 +139,11 @@ class _FirstPageState extends State<FirstPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Image.asset("assets/Google.png"),
-                SizedBox(
-                  width: 10,
+                Image.asset("assets/Google1.png"),
+                const SizedBox(
+                  width: 4,
                 ),
-                Text(
+                const Text(
                   "Google Sign-in",
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.w400),
                 ),

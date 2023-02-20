@@ -112,7 +112,7 @@ class AboutUsState extends State<AboutUs> {
                 ),
                 Text(
                   ' Bhoomi Helpline Number: ',
-                  style: GoogleFonts.poppins(fontSize: 17, color: Colors.black),
+                  style: GoogleFonts.poppins(fontSize: 16, color: Colors.black),
                 ),
                 InkWell(
                   onTap: () => launch("tel://1800-180-1551"),
@@ -123,7 +123,7 @@ class AboutUsState extends State<AboutUs> {
                       style: TextStyle(
                           decoration: TextDecoration.underline,
                           color: Colors.blue,
-                          fontSize: 17),
+                          fontSize: 16),
                     ),
                   ),
                 ),
@@ -177,13 +177,13 @@ class AboutUsState extends State<AboutUs> {
                       MaterialPageRoute(builder: (context) => TeamInfo()));
                 },
                 child: Container(
-                  height: 70,
-                  width: 70,
+                  height: 65,
+                  width: 65,
                   decoration: BoxDecoration(
                       color: Colors.black,
                       borderRadius: BorderRadius.circular(35),
                       image: const DecorationImage(
-                          image: AssetImage('assets/titans.jpeg'))),
+                          image: AssetImage('assets/tm_logo29.png'))),
                 ),
               ),
             ),
