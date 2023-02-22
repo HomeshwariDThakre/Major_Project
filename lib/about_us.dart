@@ -1,13 +1,12 @@
-import 'package:flutter/cupertino.dart';
+import 'package:bhoomi_seva/loginscreen.dart';
+import 'package:bhoomi_seva/provider/googlelogin.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'teaminfo.dart';
-
 class AboutUs extends StatefulWidget {
+  const AboutUs({super.key});
+
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -23,6 +22,7 @@ class AboutUsState extends State<AboutUs> {
     // TODO: implement build
     return Scaffold(
       body: Column(
+        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
@@ -116,8 +116,8 @@ class AboutUsState extends State<AboutUs> {
                 ),
                 InkWell(
                   onTap: () => launch("tel://1800-180-1551"),
-                  child: Expanded(
-                    child: const Text(
+                  child: const Expanded(
+                    child: Text(
                       '1800-180-1551',
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
@@ -164,30 +164,46 @@ class AboutUsState extends State<AboutUs> {
           //              padding: const EdgeInsets.all(10),
           //              child: Text('Recently we have observed the emerging concept of smart farming that makes agriculture more efficient and effective with the help of high-precision algorithms.Our App allows the users to estimate whether the use of pesticides will damage their crop or not . This app also gives user important information like the weather , soil types and tips for good farming . ',style: GoogleFonts.poppins(fontSize:16,color: Colors.black),textAlign: TextAlign.center,),))),
           // // const SizedBox(height: 10,),'
-          const SizedBox(
-            height: 60,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(15),
-            child: Align(
-              alignment: Alignment.bottomRight,
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => TeamInfo()));
+
+          // Padding(
+          //   padding: const EdgeInsets.all(15),
+          //   child: Align(
+          //     alignment: Alignment.bottomRight,
+          //     child: GestureDetector(
+          //       onTap: () {
+          //         Navigator.push(context,
+          //             MaterialPageRoute(builder: (context) => TeamInfo()));
+          //       },
+          //       child: Container(
+          //         height: 65,
+          //         width: 65,
+          //         decoration: BoxDecoration(
+          //             color: Colors.black,
+          //             borderRadius: BorderRadius.circular(35),
+          //             image: const DecorationImage(
+          //                 image: AssetImage('assets/tm_logo29.png'))),
+          //       ),
+          //     ),
+          //   ),
+          // ),
+          const Spacer(),
+          Center(
+            child: ElevatedButton(
+                style:
+                    ElevatedButton.styleFrom(fixedSize: Size(width - 50, 50)),
+                onPressed: () async {
+                  await logOut().whenComplete(() =>
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => const LoginScreen()),
+                          (route) => false));
                 },
-                child: Container(
-                  height: 65,
-                  width: 65,
-                  decoration: BoxDecoration(
-                      color: Colors.black,
-                      borderRadius: BorderRadius.circular(35),
-                      image: const DecorationImage(
-                          image: AssetImage('assets/tm_logo29.png'))),
-                ),
-              ),
-            ),
+                child: const Text("Logout")),
           ),
+          const SizedBox(
+            height: 20,
+          )
         ],
       ),
     );

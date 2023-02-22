@@ -69,6 +69,9 @@ dependencies:
   #State Management
   provider: ^5.0.0
   cloud_firestore: ^4.4.2
+  animated_bottom_navigation_bar: ^1.1.0+1
+  curved_navigation_bar: ^1.0.3
+  fluttertoast: ^8.2.1
   
 dev_dependencies:
   flutter_test:

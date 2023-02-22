@@ -1,6 +1,5 @@
 import 'package:bhoomi_seva/model/soilmodel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -80,9 +79,11 @@ class _SoilListState extends State<SoilList> {
     });
 
     if (soilData.isNotEmpty) {
-      setState(() {
-        loader = false;
-      });
+      if (mounted) {
+        setState(() {
+          loader = false;
+        });
+      }
     }
   }
 
@@ -94,37 +95,38 @@ class _SoilListState extends State<SoilList> {
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.topCenter,
-      child: Container(
-        height: MediaQuery.of(context).size.height - 80,
-        width: MediaQuery.of(context).size.width,
-        child: RefreshIndicator(
-          onRefresh: callApi,
-          child: Scaffold(
-            backgroundColor: Colors.green[200],
-            appBar: AppBar(
-              title: Text('Soilpedia',
+    return Scaffold(
+      backgroundColor: Colors.green[200],
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Text(
+                  'Soilpedia',
                   style: GoogleFonts.poppins(
-                    color: Colors.black,
-                    fontSize: 25.0,
-                  )),
-              backgroundColor: Colors.green[200],
-              elevation: 0.0,
-            ),
-            body: SingleChildScrollView(
-              child: loader
+                      fontSize: 36,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w500),
+                ),
+              ),
+              loader
                   ? const Center(child: CircularProgressIndicator())
-                  : ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: soilData.length,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemBuilder: (_, index) {
-                        SoilDataModel soil =
-                            SoilDataModel.from(soilData[index]);
-                        return SoilCard(soil: soil);
-                      }),
-            ),
+                  : Center(
+                      child: ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: soilData.length,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemBuilder: (_, index) {
+                            SoilDataModel soil =
+                                SoilDataModel.from(soilData[index]);
+                            return SoilCard(soil: soil);
+                          }),
+                    ),
+            ],
           ),
         ),
       ),

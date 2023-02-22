@@ -1,9 +1,8 @@
 import 'package:bhoomi_seva/model/tipsmodel.dart';
 import 'package:bhoomi_seva/tipscard.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_gradient_colors/flutter_gradient_colors.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Tips extends StatefulWidget {
   const Tips({super.key});
@@ -12,6 +11,27 @@ class Tips extends StatefulWidget {
 }
 
 class _TipsState extends State<Tips> {
+  bool loader = true;
+  List tipsdata = [];
+
+  Future callApi() async {
+    setState(() {
+      loader = true;
+    });
+    await FirebaseFirestore.instance.collection("Tips").get().then((value) {
+      for (var doc in value.docs) {
+        tipsdata.add(doc.data());
+      }
+    });
+    if (tipsdata.isNotEmpty) {
+      if (mounted) {
+        setState(() {
+          loader = false;
+        });
+      }
+    }
+  }
+
   List<Info> infos = [
     Info(
         title: 'Monitoring Crops Growth',
@@ -97,54 +117,77 @@ class _TipsState extends State<Tips> {
   }
 
   @override
+  void initState() {
+    callApi();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.topCenter,
-      child: Container(
-        height: MediaQuery.of(context).size.height - 80,
-        width: MediaQuery.of(context).size.width,
-        color: Colors.green[200],
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(
-                height: 40,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Text(
-                  'Tips',
-                  style: GoogleFonts.poppins(
-                      fontSize: 36,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w500),
+    return Scaffold(
+      backgroundColor: Colors.green.shade200,
+      body: RefreshIndicator(
+        onRefresh: () => callApi(),
+        child: SafeArea(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Text(
+                    'Tips',
+                    style: GoogleFonts.poppins(
+                        fontSize: 36,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500),
+                  ),
                 ),
-              ),
-              // StreamBuilder(
-              //     stream:
-              //         FirebaseFirestore.instance.collection("Tips").snapshots(),
-              //     builder: (context, snapshot) {
-              //       if (snapshot.hasError) {
-              //         return const Text('Something went wrong');
-              //       }
-              //       if (snapshot.hasData && snapshot.data!.docs.isNotEmpty) {
-              //         List tipsdata = List.from(snapshot.data!.docs
-              //             .map((doc) => TipsModel.fromSnapshot(doc)));
-              //         return ListView.builder(
-              //             itemCount: tipsdata.length,
-              //             itemBuilder: (context, index) {
-              //               return TipsCard(
-              //                 info: tipsdata[index],
-              //               );
-              //             });
-              //       }
-              //       return const Center(child: Text("No Data"));
-              //     })
-              Column(
-                children: infos.map((info) => infoTemplate(info)).toList(),
-              ),
-            ],
+
+                loader
+                    ? const Center(
+                        child: CircularProgressIndicator(),
+                      )
+                    : ListView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: tipsdata.length,
+                        itemBuilder: (context, index) {
+                          TipsModel tipsdataModel =
+                              TipsModel.from(tipsdata[index]);
+                          return TipsCard(
+                            info: tipsdataModel,
+                          );
+                        }),
+
+                // StreamBuilder(
+                //     stream: FirebaseFirestore.instance
+                //         .collection("Tips")
+                //         .snapshots(),
+                //     builder: (context, snapshot) {
+                //       if (snapshot.hasError) {
+                //         return const Text('Something went wrong');
+                //       }
+                //       if (snapshot.hasData && snapshot.data!.docs.isNotEmpty) {
+                //         List tipsdata = List.from(snapshot.data!.docs
+                //             .map((doc) => TipsModel.fromSnapshot(doc)));
+                //         return ListView.builder(
+                //             shrinkWrap: true,
+                //             itemCount: tipsdata.length,
+                //             itemBuilder: (context, index) {
+                //               return TipsCard(
+                //                 info: tipsdata[index],
+                //               );
+                //             });
+                //       }
+                //       return const Center(child: Text("No Data"));
+                //     })
+                // Column(
+                //   // children: infos.map((info) => infoTemplate(info)).toList(),
+                // ),
+              ],
+            ),
           ),
         ),
       ),
