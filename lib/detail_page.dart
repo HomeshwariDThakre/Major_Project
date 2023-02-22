@@ -1,11 +1,10 @@
 import 'package:bhoomi_seva/model/soilmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'soil.dart';
 
 class DetailPage extends StatelessWidget {
   final SoilDataModel detail;
-  const DetailPage({required this.detail});
+  const DetailPage({super.key, required this.detail});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +32,7 @@ class DetailPage extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                Container(
+                SizedBox(
                   height: 200,
                   width: 350,
                   child: Image.network(detail.image.toString()),

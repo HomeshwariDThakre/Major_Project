@@ -3,59 +3,28 @@ import 'package:bhoomi_seva/provider/googlelogin.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class AboutUs extends StatefulWidget {
   const AboutUs({super.key});
 
   @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    return AboutUsState();
-  }
+  State<StatefulWidget> createState() => AboutUsState();
 }
 
 class AboutUsState extends State<AboutUs> {
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
+    // double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    // TODO: implement build
+
     return Scaffold(
       body: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            height: 300,
-            width: width,
-            decoration: const BoxDecoration(
-              color: Colors.brown,
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Center(
-                  child: CircleAvatar(
-                    radius: 80,
-                    foregroundColor: Colors.green,
-                    backgroundImage: AssetImage('assets/kisan_helper.jpg'),
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  'Contact Us',
-                  style: GoogleFonts.varelaRound(
-                      fontSize: 36,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w700),
-                )
-              ],
-            ),
-          ),
+          Titlebar(width: width),
           const SizedBox(height: 30),
-
           Padding(
             padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
             child: Text(
@@ -67,6 +36,8 @@ class AboutUsState extends State<AboutUs> {
           Padding(
             padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
               children: [
                 const Icon(
                   Icons.email,
@@ -115,16 +86,14 @@ class AboutUsState extends State<AboutUs> {
                   style: GoogleFonts.poppins(fontSize: 16, color: Colors.black),
                 ),
                 InkWell(
-                  onTap: () => launch("tel://1800-180-1551"),
-                  child: const Expanded(
-                    child: Text(
-                      '1800-180-1551',
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                          decoration: TextDecoration.underline,
-                          color: Colors.blue,
-                          fontSize: 16),
-                    ),
+                  onTap: () => launchUrl(Uri(host: "tel://1800-180-1551")),
+                  child: const Text(
+                    '1800-180-1551',
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        color: Colors.blue,
+                        fontSize: 16),
                   ),
                 ),
               ],
@@ -144,7 +113,7 @@ class AboutUsState extends State<AboutUs> {
                   style: GoogleFonts.poppins(fontSize: 17, color: Colors.black),
                 ),
                 InkWell(
-                  onTap: () => launch("tel://1800-120-4049"),
+                  onTap: () => launchUrlString("tel://1800-120-4049"),
                   child: const Text(
                     '1800-120-4049',
                     style: TextStyle(
@@ -215,10 +184,50 @@ class AboutUsState extends State<AboutUs> {
       path: url1,
     );
     String url = params.toString();
-    if (await canLaunch(url)) {
-      await launch(url);
+    if (await canLaunchUrlString(url)) {
+      await launchUrlString(url);
     } else {
       print('Could not launch $url');
     }
+  }
+}
+
+class Titlebar extends StatelessWidget {
+  const Titlebar({
+    super.key,
+    required this.width,
+  });
+
+  final double width;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 300,
+      width: width,
+      decoration: const BoxDecoration(
+        color: Colors.brown,
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Center(
+            child: CircleAvatar(
+              radius: 80,
+              foregroundColor: Colors.green,
+              backgroundImage: AssetImage('assets/kisan_helper.jpg'),
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Text(
+            'Contact Us',
+            style: GoogleFonts.varelaRound(
+                fontSize: 36, color: Colors.white, fontWeight: FontWeight.w700),
+          )
+        ],
+      ),
+    );
   }
 }

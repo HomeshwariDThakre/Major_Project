@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -7,6 +6,8 @@ import 'package:http/http.dart';
 import 'package:intl/intl.dart';
 
 class Weather extends StatefulWidget {
+  const Weather({super.key});
+
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -42,11 +43,11 @@ class WeatherState extends State<Weather> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 36,
                     ),
                     Padding(
-                        padding: EdgeInsets.all(20),
+                        padding: const EdgeInsets.all(20),
                         child: Text(
                           "Weather",
                           style: GoogleFonts.poppins(
@@ -57,7 +58,7 @@ class WeatherState extends State<Weather> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Container(
+                        SizedBox(
                             height: 140,
                             width: 140,
                             child: Image.asset(
@@ -208,7 +209,7 @@ class WeatherState extends State<Weather> {
       return [const Color(0xFFFFDF00), const Color(0xFFF6D108)];
     } else if (hour > 16 && hour < 19) {
       return [
-        Color(0xFF4e54c8),
+        const Color(0xFF4e54c8),
         const Color(0xFF9795ef),
       ];
     } else {

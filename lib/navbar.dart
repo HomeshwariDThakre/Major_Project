@@ -17,7 +17,7 @@ class KisanRakshak extends StatefulWidget {
 class KisanRakshakState extends State<KisanRakshak> {
   int currentIndex = 2;
   final List<Widget> _pages = [
-    Weather(),
+    const Weather(),
     const SoilList(),
     const ChatBotScreen(),
     const Tips(),
@@ -33,7 +33,6 @@ class KisanRakshakState extends State<KisanRakshak> {
   ];
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: colors[currentIndex],
       body: _pages[currentIndex],
