@@ -9,7 +9,7 @@ class SoilList extends StatefulWidget {
   const SoilList({Key? key}) : super(key: key);
 
   @override
-  _SoilListState createState() => _SoilListState();
+  State<SoilList> createState() => _SoilListState();
 }
 
 class _SoilListState extends State<SoilList> {

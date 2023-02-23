@@ -7,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 class Tips extends StatefulWidget {
   const Tips({super.key});
   @override
-  _TipsState createState() => _TipsState();
+  State<Tips> createState() => _TipsState();
 }
 
 class _TipsState extends State<Tips> {

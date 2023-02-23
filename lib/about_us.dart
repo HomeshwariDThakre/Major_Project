@@ -187,7 +187,7 @@ class AboutUsState extends State<AboutUs> {
     if (await canLaunchUrlString(url)) {
       await launchUrlString(url);
     } else {
-      print('Could not launch $url');
+      // print('Could not launch $url');
     }
   }
 }

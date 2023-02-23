@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -9,21 +10,17 @@ class Weather extends StatefulWidget {
   const Weather({super.key});
 
   @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    return WeatherState();
-  }
+  State<StatefulWidget> createState() => WeatherState();
 }
 
 class WeatherState extends State<Weather> {
-  List<current> weather = [];
+  List<Current> weather = [];
 
   int hour = DateTime.now().hour;
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
-      body: FutureBuilder<List<forecast>>(
+      body: FutureBuilder<List<Forecast>>(
           future: getweather(),
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
@@ -258,14 +255,14 @@ class WeatherState extends State<Weather> {
     return await Geolocator.getCurrentPosition();
   }
 
-  Future<List<forecast>> getweather() async {
+  Future<List<Forecast>> getweather() async {
     Position p = await _determinePosition();
     Response r = await get(Uri.parse(
         "https://api.openweathermap.org/data/2.5/onecall?lat=${p.latitude}&lon=${p.longitude}&exclude=hourly,minutely&appid=8cb6386fe572b5b0befe4eba9bfa7c2f"));
     //print(r.body);
     Map<String, dynamic> x = jsonDecode(r.body);
     //print(x['current']);
-    weather.add(current(
+    weather.add(Current(
         x['current']['temp'],
         x['current']['weather'][0]['description'],
         x['current']['weather'][0]['main'],
@@ -273,12 +270,14 @@ class WeatherState extends State<Weather> {
         x['current']['weather'][0]['id'],
         x['current']['pressure']));
     var y = x['daily'];
-    print(y);
+    if (kDebugMode) {
+      print(y);
+    }
 
-    List<forecast> z = [];
+    List<Forecast> z = [];
     for (var i = 1; i < 5; i++) {
       //print(y[i]['weather'][0]['id']);
-      z.add(forecast(
+      z.add(Forecast(
           y[i]['dt'],
           y[i]['humidity'],
           y[i]['temp']['max'],
@@ -291,18 +290,18 @@ class WeatherState extends State<Weather> {
   }
 }
 
-class current {
+class Current {
   var temp;
   var pressure;
   var humidity;
   var weather;
   var id;
   var desc;
-  current(this.temp, this.desc, this.weather, this.humidity, this.id,
+  Current(this.temp, this.desc, this.weather, this.humidity, this.id,
       this.pressure);
 }
 
-class forecast {
+class Forecast {
   var dt;
   var max;
 // ignore: prefer_typing_uninitialized_variables
@@ -311,5 +310,5 @@ class forecast {
 // ignore: prefer_typing_uninitialized_variables
   var weather;
   var desc;
-  forecast(this.dt, this.humidity, this.max, this.min, this.weather, this.desc);
+  Forecast(this.dt, this.humidity, this.max, this.min, this.weather, this.desc);
 }

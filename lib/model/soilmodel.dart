@@ -24,16 +24,6 @@ class SoilDataModel {
     };
   }
 
-  SoilDataModel.fromSnapshot(snapshot)
-      : about = snapshot.data()['about'],
-        characteristics = snapshot.data()['characteristics'],
-        foundIn = snapshot.data()['foundIn'],
-        image = snapshot.data()['image2'],
-        imagemap = snapshot.data()['image_map'],
-        mainimage = snapshot.data()['mainimage'],
-        name = snapshot.data()['name'],
-        suitableCrops = snapshot.data()['suitableCrops'];
-
   SoilDataModel.from(data)
       : about = data['about'],
         images = data['images'],

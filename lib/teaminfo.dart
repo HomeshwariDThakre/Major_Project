@@ -1,15 +1,14 @@
-import 'package:flutter/cupertino.dart'; //code deleted which were not in use
+//code deleted which were not in use
 import 'package:flutter/material.dart';
 import 'package:flutter_gradient_colors/flutter_gradient_colors.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class TeamInfo extends StatefulWidget {
+  const TeamInfo({super.key});
+
   @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    return TeamInfoState();
-  }
+  State<StatefulWidget> createState() => TeamInfoState();
 }
 
 class TeamInfoState extends State<TeamInfo> {
@@ -65,7 +64,7 @@ class TeamInfoState extends State<TeamInfo> {
               Padding(
                 padding: const EdgeInsets.all(20),
                 child: GestureDetector(
-                  onTap: () => launch(
+                  onTap: () => launchUrlString(
                       'https://github.com/Blazikengr8'), //github link Homeshwari
                   child: Container(
                     padding: const EdgeInsets.all(20),
@@ -113,8 +112,8 @@ class TeamInfoState extends State<TeamInfo> {
               Padding(
                 padding: const EdgeInsets.all(20),
                 child: GestureDetector(
-                  onTap: () =>
-                      launch('https://github.com/Suvoo'), //Anupam Github link
+                  onTap: () => launchUrlString(
+                      'https://github.com/Suvoo'), //Anupam Github link
                   child: Container(
                     padding: const EdgeInsets.all(20),
                     decoration: BoxDecoration(
@@ -161,7 +160,7 @@ class TeamInfoState extends State<TeamInfo> {
               Padding(
                 padding: const EdgeInsets.all(20),
                 child: GestureDetector(
-                  onTap: () => launch(
+                  onTap: () => launchUrlString(
                       'https://github.com/namannj15'), //Mitali Github link
                   child: Container(
                     padding: const EdgeInsets.all(20),

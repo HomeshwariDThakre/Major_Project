@@ -1,13 +1,21 @@
 import 'package:bhoomi_seva/model/soilmodel.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class DetailPage extends StatelessWidget {
+class DetailPage extends StatefulWidget {
   final SoilDataModel detail;
   const DetailPage({super.key, required this.detail});
 
   @override
+  State<DetailPage> createState() => _DetailPageState();
+}
+
+class _DetailPageState extends State<DetailPage> {
+  int current = 0;
+  @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.brown[200],
       appBar: AppBar(
@@ -19,7 +27,7 @@ class DetailPage extends StatelessWidget {
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: Text(
-          detail.name.toString(),
+          widget.detail.name.toString(),
           style: GoogleFonts.poppins(fontSize: 25.0, color: Colors.black),
         ),
         backgroundColor: Colors.green[200],
@@ -32,11 +40,44 @@ class DetailPage extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                SizedBox(
-                  height: 200,
-                  width: 350,
-                  child: Image.network(detail.image.toString()),
+                CarouselSlider(
+                  options: CarouselOptions(
+                      // height: height * 0.40,
+                      aspectRatio: 1 / 1,
+                      viewportFraction: 1,
+                      initialPage: 0,
+                      autoPlay: true,
+                      autoPlayInterval: const Duration(seconds: 12),
+                      autoPlayAnimationDuration:
+                          const Duration(milliseconds: 800),
+                      autoPlayCurve: Curves.easeInOut,
+                      enlargeCenterPage: true,
+                      scrollDirection: Axis.horizontal,
+                      onPageChanged: (index, reason) {
+                        setState(() {
+                          current = index;
+                        });
+                      }),
+                  items: widget.detail.images!.map((i) {
+                    return Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(15),
+                        child: Image.network(
+                          i,
+                          // height: 160,
+                          width: width,
+                          fit: BoxFit.fitWidth,
+                        ),
+                      ),
+                    );
+                  }).toList(),
                 ),
+                // SizedBox(
+                //   height: 200,
+                //   width: 350,
+                //   child: Image.network(detail.image.toString()),
+                // ),
                 const SizedBox(
                   height: 15.0,
                 ),
@@ -60,7 +101,7 @@ class DetailPage extends StatelessWidget {
                         padding:
                             const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 10.0),
                         child: Text(
-                          detail.about.toString(),
+                          widget.detail.about.toString(),
                           style: GoogleFonts.poppins(
                             color: Colors.white,
                             fontSize: 15.0,
@@ -92,7 +133,7 @@ class DetailPage extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 8.0),
                         child: Text(
-                          detail.foundIn.toString(),
+                          widget.detail.foundIn.toString(),
                           style: GoogleFonts.poppins(
                             color: Colors.white,
                             fontSize: 15.0,
@@ -124,7 +165,7 @@ class DetailPage extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 8.0),
                         child: Text(
-                          detail.characteristics.toString(),
+                          widget.detail.characteristics.toString(),
                           style: GoogleFonts.poppins(
                             color: Colors.white,
                             fontSize: 15.0,
@@ -156,7 +197,7 @@ class DetailPage extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 8.0),
                         child: Text(
-                          detail.suitableCrops.toString(),
+                          widget.detail.suitableCrops.toString(),
                           style: GoogleFonts.poppins(
                             color: Colors.white,
                             fontSize: 15.0,
