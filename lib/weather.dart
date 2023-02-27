@@ -15,11 +15,19 @@ class Weather extends StatefulWidget {
 
 class WeatherState extends State<Weather> {
   List<Current> weather = [];
-
+  Color weatherColour = Colors.white;
   int hour = DateTime.now().hour;
+  @override
+  void initState() {
+    List<Color> temp = getcolor();
+    weatherColour = temp[1];
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: weatherColour,
       body: FutureBuilder<List<Forecast>>(
           future: getweather(),
           builder: (context, snapshot) {

@@ -16,23 +16,49 @@ class KisanRakshak extends StatefulWidget {
 
 class KisanRakshakState extends State<KisanRakshak> {
   int currentIndex = 2;
+  Color weatherColour = Colors.white;
   final List<Widget> _pages = [
-    const Weather(),
+    const Helper(),
     const SoilList(),
-    const ChatBotScreen(),
+    const Weather(),
     const Tips(),
     const AboutUs(),
   ];
+  int hour = DateTime.now().hour;
+  List<Color> getcolor() {
+    if (hour >= 6 && hour <= 11) {
+      return [
+        const Color(0xFF83eaf1),
+        const Color(0xFF3eadcf)
+      ]; //const Color(0xFF83eaf1), const Color(0xFF3eadcf)
+    } else if (hour > 11 && hour <= 16) {
+      return [const Color(0xFFFFDF00), const Color(0xFFF6D108)];
+    } else if (hour > 16 && hour < 19) {
+      return [
+        const Color(0xFF4e54c8),
+        const Color(0xFF9795ef),
+      ];
+    } else {
+      return [const Color(0xFF001D37), const Color(0xFF01162E)];
+    }
+  }
 
-  List colors = [
-    Colors.green.shade200,
-    Colors.green.shade200,
-    Colors.white,
-    Colors.green.shade200,
-    Colors.white,
-  ];
+  @override
+  void initState() {
+    List<Color> temp = getcolor();
+    weatherColour = temp[1];
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+    List colors = [
+      Colors.white,
+      Colors.green.shade200,
+      weatherColour,
+      Colors.green.shade200,
+      Colors.white,
+    ];
     return Scaffold(
       backgroundColor: colors[currentIndex],
       body: _pages[currentIndex],
@@ -41,9 +67,9 @@ class KisanRakshakState extends State<KisanRakshak> {
         color: Colors.green.shade400,
         backgroundColor: Colors.transparent,
         items: const <Widget>[
-          Icon(FontAwesomeIcons.cloudSunRain, size: 30),
-          Icon(FontAwesomeIcons.seedling, size: 30),
           Icon(FontAwesomeIcons.gitlab, size: 30),
+          Icon(FontAwesomeIcons.seedling, size: 30),
+          Icon(FontAwesomeIcons.cloudSunRain, size: 30),
           Icon(FontAwesomeIcons.list, size: 30),
           Icon(FontAwesomeIcons.mobile, size: 30),
         ],
