@@ -264,37 +264,41 @@ class WeatherState extends State<Weather> {
   }
 
   Future<List<Forecast>> getweather() async {
-    Position p = await _determinePosition();
-    Response r = await get(Uri.parse(
-        "https://api.openweathermap.org/data/2.5/onecall?lat=${p.latitude}&lon=${p.longitude}&exclude=hourly,minutely&appid=8cb6386fe572b5b0befe4eba9bfa7c2f"));
-    //print(r.body);
-    Map<String, dynamic> x = jsonDecode(r.body);
-    //print(x['current']);
-    weather.add(Current(
-        x['current']['temp'],
-        x['current']['weather'][0]['description'],
-        x['current']['weather'][0]['main'],
-        x['current']['humidity'],
-        x['current']['weather'][0]['id'],
-        x['current']['pressure']));
-    var y = x['daily'];
-    if (kDebugMode) {
-      print(y);
-    }
+    try {
+      Position p = await _determinePosition();
+      Response r = await get(Uri.parse(
+          "https://api.openweathermap.org/data/2.5/onecall?lat=${p.latitude}&lon=${p.longitude}&exclude=hourly,minutely&appid=8cb6386fe572b5b0befe4eba9bfa7c2f"));
+      //print(r.body);
+      Map<String, dynamic> x = jsonDecode(r.body);
+      //print(x['current']);
+      weather.add(Current(
+          x['current']['temp'],
+          x['current']['weather'][0]['description'],
+          x['current']['weather'][0]['main'],
+          x['current']['humidity'],
+          x['current']['weather'][0]['id'],
+          x['current']['pressure']));
+      var y = x['daily'];
+      if (kDebugMode) {
+        print(y);
+      }
+      List<Forecast> z = [];
+      for (var i = 1; i < 5; i++) {
+        //print(y[i]['weather'][0]['id']);
+        z.add(Forecast(
+            y[i]['dt'],
+            y[i]['humidity'],
+            y[i]['temp']['max'],
+            y[i]['temp']['min'],
+            y[i]['weather'][0]['main'],
+            y[i]['weather'][0]['id']));
+      }
 
-    List<Forecast> z = [];
-    for (var i = 1; i < 5; i++) {
-      //print(y[i]['weather'][0]['id']);
-      z.add(Forecast(
-          y[i]['dt'],
-          y[i]['humidity'],
-          y[i]['temp']['max'],
-          y[i]['temp']['min'],
-          y[i]['weather'][0]['main'],
-          y[i]['weather'][0]['id']));
+      return z;
+    } catch (e) {
+      List<Forecast> z = [];
+      return z;
     }
-
-    return z;
   }
 }
 

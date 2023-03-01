@@ -55,15 +55,12 @@ class Helper extends StatefulWidget {
   const Helper({super.key});
 
   @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    return HelperState();
-  }
+  State<StatefulWidget> createState() => HelperState();
 }
 
 class HelperState extends State<Helper> {
-  int type_of_crop = 0, soil_type = 0, pesticide_use = 0, pesticide_count = 0;
-  double pesticide_week = 0;
+  int typeofcrop = 0, soiltype = 0, pesticideuse = 0, pesticidecount = 0;
+  double pesticideweek = 0;
   int count = 1;
   bool isLoading = false, result = false;
   int ans = 0;
@@ -123,7 +120,7 @@ class HelperState extends State<Helper> {
                 child: Padding(
                   padding: const EdgeInsets.all(5),
                   child: DropdownButton<int>(
-                      value: type_of_crop,
+                      value: typeofcrop,
                       items: const [
                         DropdownMenuItem(
                           value: 0,
@@ -136,7 +133,7 @@ class HelperState extends State<Helper> {
                       ],
                       onChanged: (int? value) {
                         setState(() {
-                          type_of_crop = value!;
+                          typeofcrop = value!;
                         });
                       }),
                 ),
@@ -210,7 +207,7 @@ class HelperState extends State<Helper> {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: DropdownButton<int>(
-                      value: soil_type,
+                      value: soiltype,
                       items: const [
                         DropdownMenuItem(
                           value: 0,
@@ -223,7 +220,7 @@ class HelperState extends State<Helper> {
                       ],
                       onChanged: (int? value) {
                         setState(() {
-                          soil_type = value!;
+                          soiltype = value!;
                         });
                       }),
                 ),
@@ -303,7 +300,7 @@ class HelperState extends State<Helper> {
                         color: Colors.grey[300],
                         borderRadius: BorderRadius.circular(15)),
                     child: DropdownButton<int>(
-                        value: pesticide_use,
+                        value: pesticideuse,
                         items: const [
                           DropdownMenuItem(
                             value: 0,
@@ -320,7 +317,7 @@ class HelperState extends State<Helper> {
                         ],
                         onChanged: (int? value) {
                           setState(() {
-                            pesticide_use = value!;
+                            pesticideuse = value!;
                           });
                         }),
                   ),
@@ -397,7 +394,7 @@ class HelperState extends State<Helper> {
                     keyboardType: TextInputType.number,
                     onChanged: (value) {
                       setState(() {});
-                      pesticide_count = int.parse(value);
+                      pesticidecount = int.parse(value);
                     },
                   )),
             ),
@@ -471,7 +468,7 @@ class HelperState extends State<Helper> {
                     keyboardType: TextInputType.number,
                     onChanged: (value) {
                       setState(() {
-                        pesticide_week = double.parse(value);
+                        pesticideweek = double.parse(value);
                       });
                     },
                   )),
@@ -483,10 +480,12 @@ class HelperState extends State<Helper> {
                 alignment: Alignment.topCenter,
                 child: GestureDetector(
                   onTap: () async {
+                    // processingPopup(context: context, msg: "getting data...");
                     isLoading = true;
                     ans = await getData();
                     result = true;
                     setState(() {});
+                    // Navigator.pop(context);
                   },
                   child: Container(
                     height: 40,
@@ -507,7 +506,7 @@ class HelperState extends State<Helper> {
     ];
     Size size = MediaQuery.of(context).size;
     var height = size.height;
-    // TODO: implement build
+
     return Scaffold(
       backgroundColor: Colors.green,
       body: (isLoading == false && result == false)
@@ -633,11 +632,11 @@ class HelperState extends State<Helper> {
   Future<int> getData() async {
     Random random = Random();
     int a1, a2, a3;
-    if (pesticide_count == 0) {
+    if (pesticidecount == 0) {
       a1 = 1;
       a2 = 0;
       a3 = 0;
-    } else if (pesticide_count == 1) {
+    } else if (pesticidecount == 1) {
       a1 = 0;
       a2 = 1;
       a3 = 0;
@@ -646,17 +645,18 @@ class HelperState extends State<Helper> {
       a2 = 0;
       a3 = 1;
     }
-    print(pesticide_week);
+    // print(pesticideweek);
     final url = Uri.parse(
-        'http://suvoo.pythonanywhere.com/predict?a=1575&b=$type_of_crop&c=$soil_type&d=$pesticide_count&e=$pesticide_week&f=${random.nextInt(50)}&g=$a1&h=$a2&i=$a3&k=0&l=0&m=1');
-    print(url);
+        'https://plant-health.onrender.com/predict?a=1575&b=$typeofcrop&c=$soiltype&d=$pesticidecount&e=$pesticideweek&f=${random.nextInt(50)}&g=$a1&h=$a2&i=$a3&k=0&l=0&m=1');
+    // print(url);
     final headers = {"Content-type": "application/json"};
     final json =
-        '{"a"=${random.nextInt(4097 - 150) + 150}&"b"=$type_of_crop&"c"=$soil_type&"d"=$pesticide_count&"e"=$pesticide_week&"f"=${random.nextInt(50)}&"g"=1&"h"=2&"i"=3&"k=1&"l"=2&"m"=3}';
+        '{"a"=${random.nextInt(4097 - 150) + 150}&"b"=$typeofcrop&"c"=$soiltype&"d"=$pesticidecount&"e"=$pesticideweek&"f"=${random.nextInt(50)}&"g"=1&"h"=2&"i"=3&"k=1&"l"=2&"m"=3}';
     final response = await get(
       url,
     );
     print('Status code: ${response.statusCode}');
+    // http: //suvoo.pythonanywhere.com/predict?a=1575&b=$typeofcrop&c=$soiltype&d=$pesticidecount&e=$pesticideweek&f=${random.nextInt(50)}&g=$a1&h=$a2&i=$a3&k=0&l=0&m=1
     print('Body: ${response.body}');
     print(int.parse(response.body[1]));
     return int.parse(response.body[1]);
