@@ -120,7 +120,7 @@ class SoilCard extends StatelessWidget {
           elevation: 10.0,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-          color: Colors.green,
+          color: Color(0xffB39CD0),
           clipBehavior: Clip.antiAlias,
           child: InkWell(
             child: Column(
@@ -129,7 +129,7 @@ class SoilCard extends StatelessWidget {
                   title: Text(
                     soil.name.toString(),
                     style: GoogleFonts.poppins(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 20.0,
                     ),
                   ),

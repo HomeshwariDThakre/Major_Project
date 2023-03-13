@@ -13,8 +13,10 @@ class SoilList extends StatefulWidget {
 }
 
 class _SoilListState extends State<SoilList> {
+
   bool loader = true;
-  List soilData = [];
+  
+   List soilData = [];
 
   List<Soil> soils = [
     Soil(
@@ -95,8 +97,8 @@ class _SoilListState extends State<SoilList> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.green[200],
+    return Scaffold( 
+      backgroundColor: Color(0xffFEF6FF),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -120,7 +122,7 @@ class _SoilListState extends State<SoilList> {
                           shrinkWrap: true,
                           itemCount: soilData.length,
                           physics: const NeverScrollableScrollPhysics(),
-                          itemBuilder: (_, index) {
+                          itemBuilder: (context, index) {
                             SoilDataModel soil =
                                 SoilDataModel.from(soilData[index]);
                             return SoilCard(soil: soil);

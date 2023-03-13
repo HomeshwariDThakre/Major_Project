@@ -30,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
       navigateRoute: FirebaseAuth.instance.currentUser != null
           ? const KisanRakshak()
           : const LoginScreen(),
-      imageSrc: 'assets/abc.png',
+      imageSrc: 'assets/flashscreen29.png',
     );
   }
 }

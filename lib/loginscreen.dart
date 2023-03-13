@@ -1,74 +1,141 @@
 // import 'package:bhoomi_seva/navbar.dart';
+import 'package:bhoomi_seva/classes/language.dart';
+import 'package:bhoomi_seva/classes/language_constants.dart';
 import 'package:bhoomi_seva/data/userdata.dart';
+import 'package:bhoomi_seva/main.dart';
 import 'package:bhoomi_seva/navbar.dart';
 import 'package:bhoomi_seva/provider/googlelogin.dart';
 //import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 // import 'package:flutter/src/widgets/container.dart';
 // import 'package:flutter/src/widgets/framework.dart';
 // import 'package:flutter_svg/flutter_svg.dart';
 //import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+  const LoginScreen({Key? key}) : super(key: key);
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final GlobalKey<FormState> _key = GlobalKey<FormState>();
+
+  // void _showSuccessDialog() {
+  //   showTimePicker(context: context, initialTime: TimeOfDay.now());
+  // }
+
   @override
   Widget build(BuildContext context) {
     // var backgroundColor2 = #F8FFF2;
     //var backgroundColor;
     // ignore: prefer_const_constructors
     return Scaffold(
-      backgroundColor: Colors.green[200],
-      // backgroundColor: rgb(248,255,242);
+      backgroundColor: Color(0xffFBEAFF),
+      // back groundColor: rgb(248,255,242);
       // backgroundColor: Color.fromRGBO(248, 255, 242, 0),
-      body: Column(
-        children: [
-          Align(
-              alignment: Alignment.topRight,
-              child: Image.asset("assets/Language1.png")),
-          const SizedBox(
-            height: 40,
+      appBar: AppBar(
+        title: Text(translation(context).loginscreen),
+        backgroundColor: Color(0xff845EC2),
+        //       title: Text(AppLocalizations.of(context)!.bhoomiSeva), //idhar bhoomiseva nhi aayega n
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: DropdownButton<Language>(
+              underline: const SizedBox(),
+              icon: const Icon(
+                Icons.language,
+                color: Colors.white,
+              ),
+              onChanged: (Language? language) async {
+                if (language != null) {
+                  Locale _locale = await setLocale(language.languageCode);
+                  MyApp.setLocale(context, _locale);
+                }
+              },
+              items: Language.languageList()
+                  .map<DropdownMenuItem<Language>>(
+                    (e) => DropdownMenuItem<Language>(
+                      value: e,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          Text(
+                            e.flag,
+                            style: const TextStyle(fontSize: 30),
+                          ),
+                          Text(e.name)
+                        ],
+                      ),
+                    ),
+                  )
+                  .toList(),
+            ),
           ),
-          SizedBox(
-              height: 235,
-              width: 235,
+        ],
+      ),
+      // drawer: Drawer(
+      //   child: _drawerList(),
+      // ),
+      //     //),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(20),
+        child: _mainForm(context),
+      ),
+    );
+  }
+
+  Form _mainForm(BuildContext context) {
+    return Form(
+        key: _key,
+        child: Column(children: <Widget>[
+          Container(
+              margin: const EdgeInsets.fromLTRB(20, 45, 20, 20),
+              height: 200,
+              width: 200,
               child: Image.asset(
-                "assets/Login1.png",
+                "assets/logo.png",
                 fit: BoxFit.fill,
               )),
-          const Padding(
-            padding: EdgeInsets.only(top: 60, bottom: 10),
+          //   ),
+          // ),
+          Padding(
+            padding: EdgeInsets.only(top: 40, bottom: 75),
             child: Text(
-              "Welcome to BHO🌎MI SEVA ",
+              translation(context).welcome,
+              // AppLocalizations.of(context)!.WELCOME\nTO\nBHO🌎MI SEVA
               //  semanticsLabel: "Info about the app in 1-2 lines",
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 26,
-                fontWeight: FontWeight.w400,
+                fontSize: 30,
+                color: Color(0xff845EC2),
+                fontWeight: FontWeight.w500,
               ),
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.only(top: 0, bottom: 65),
-            child: Text(
-              "To forget how to dig the earth and tend the soil is to forget ourselves.",
-              //  semanticsLabel: "Info about the app in 1-2 lines",
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
-            ),
-          ),
+          // const Padding(
+          //   padding: EdgeInsets.only(top: 15, bottom: 50),
+          //   child: Text(
+          //     "Caring nature for Caring Life.",
+          //     //  semanticsLabel: "Info about the app in 1-2 lines",
+          //     textAlign: TextAlign.center,
+
+          //     style: TextStyle(
+          //         fontSize: 20,
+          //         color: Color(0xff4E8397),
+          //         fontWeight: FontWeight.w500),
+          //   ),
+          // ),
           // CircleAvatar(
           //   backgroundColor: Colors.white,
           //   child: SvgPicture.asset("assets/tree.svg"),
-          // ),
+          //  ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.green[200],
+                backgroundColor: Color(0xffFBEAFF),
                 //backgroundColor: Colors.white,
                 foregroundColor: Colors.black,
                 elevation: 0),
@@ -100,15 +167,18 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(
                   width: 15,
                 ),
-                const Text(
-                  "Google Sign-in",
+                Text(
+                  translation(context).google,
+                  textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.w400),
                 ),
               ],
             ),
           ),
-        ],
-      ),
-    );
+        ]));
   }
+
+  // _drawerList() {}
+
+  // translation(BuildContext context) {}
 }

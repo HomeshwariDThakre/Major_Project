@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:bhoomi_seva/classes/language_constants.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
@@ -54,7 +55,7 @@ class WeatherState extends State<Weather> {
                     Padding(
                         padding: const EdgeInsets.all(20),
                         child: Text(
-                          "Weather",
+                          (translation(context).weather),
                           style: GoogleFonts.poppins(
                               fontSize: 36,
                               color: Colors.white,
@@ -97,7 +98,7 @@ class WeatherState extends State<Weather> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text(
-                              'Humidity',
+                              (translation(context).humidity),
                               style: GoogleFonts.poppins(
                                   color: Colors.white,
                                   fontSize: 24,
@@ -114,7 +115,7 @@ class WeatherState extends State<Weather> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text(
-                              'Pressure',
+                              (translation(context).pressure),
                               style: GoogleFonts.poppins(
                                   color: Colors.white,
                                   fontSize: 24,
@@ -135,7 +136,7 @@ class WeatherState extends State<Weather> {
                     Padding(
                         padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                         child: Text(
-                          'Forecast :',
+                          (translation(context).forecast),
                           style: GoogleFonts.poppins(
                               color: Colors.white,
                               fontSize: 24,
@@ -175,6 +176,7 @@ class WeatherState extends State<Weather> {
                                     Column(
                                       children: [
                                         Text(
+                                          //(translation(context).max :  ${(document.max - 273.15).toStringAsFixed(1)}°),
                                           'Max:  ${(document.max - 273.15).toStringAsFixed(1)}°',
                                           style: GoogleFonts.poppins(
                                               color: Colors.white,
@@ -182,7 +184,7 @@ class WeatherState extends State<Weather> {
                                               fontWeight: FontWeight.w600),
                                         ),
                                         Text(
-                                          'Max:  ${(document.min - 273.15).toStringAsFixed(1)}°',
+                                          'Min:  ${(document.min - 273.15).toStringAsFixed(1)}°',
                                           style: GoogleFonts.poppins(
                                               color: Colors.white,
                                               fontSize: 14,
@@ -240,6 +242,13 @@ class WeatherState extends State<Weather> {
     } else {
       return 'assets/ic_unknown.png';
     }
+    Text(translation(context).storm);
+    Text(translation(context).smoke);
+    Text(translation(context).rainy);
+    Text(translation(context).snow);
+    Text(translation(context).clear);
+    Text(translation(context).cloudy);
+    Text(translation(context).unknown);
   }
 
   Future<Position> _determinePosition() async {

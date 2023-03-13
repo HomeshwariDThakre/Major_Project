@@ -1,3 +1,4 @@
+import 'package:bhoomi_seva/classes/language_constants.dart';
 import 'package:bhoomi_seva/loginscreen.dart';
 import 'package:bhoomi_seva/provider/googlelogin.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,9 @@ class AboutUsState extends State<AboutUs> {
     // double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
+    // var color;
     return Scaffold(
+      backgroundColor: Color(0xffFEF6FF),
       body: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -28,7 +31,7 @@ class AboutUsState extends State<AboutUs> {
           Padding(
             padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
             child: Text(
-              'Contact Us',
+              translation(context).contactus,
               style: GoogleFonts.poppins(fontSize: 22, color: Colors.black),
             ),
           ),
@@ -44,8 +47,8 @@ class AboutUsState extends State<AboutUs> {
                   color: Colors.green,
                 ),
                 Text(
-                  ' Email:  ',
-                  style: GoogleFonts.poppins(fontSize: 18, color: Colors.black),
+                  translation(context).email,
+                  style: GoogleFonts.poppins(fontSize: 16, color: Colors.black),
                 ),
                 InkWell(
                   onTap: () async {
@@ -53,7 +56,7 @@ class AboutUsState extends State<AboutUs> {
                     setState(() {});
                   },
                   child: const Text(
-                    'kisan.rakshak@gov.in',
+                    ' kisan.rakshak@gov.in',
                     style: TextStyle(
                         decoration: TextDecoration.underline,
                         color: Colors.blue,
@@ -68,7 +71,7 @@ class AboutUsState extends State<AboutUs> {
           Padding(
             padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
             child: Text(
-              'Important Helplines',
+              translation(context).importanthelplines,
               style: GoogleFonts.poppins(fontSize: 22, color: Colors.black),
             ),
           ),
@@ -82,7 +85,7 @@ class AboutUsState extends State<AboutUs> {
                   color: Colors.green,
                 ),
                 Text(
-                  ' Bhoomi Helpline Number: ',
+                  translation(context).bhoomihelplinenumber,
                   style: GoogleFonts.poppins(fontSize: 16, color: Colors.black),
                 ),
                 InkWell(
@@ -109,8 +112,8 @@ class AboutUsState extends State<AboutUs> {
                   color: Colors.green,
                 ),
                 Text(
-                  ' National Helpline: ',
-                  style: GoogleFonts.poppins(fontSize: 17, color: Colors.black),
+                  translation(context).nationalhelpline,
+                  style: GoogleFonts.poppins(fontSize: 16, color: Colors.black),
                 ),
                 InkWell(
                   onTap: () => launchUrlString("tel://1800-120-4049"),
@@ -156,8 +159,9 @@ class AboutUsState extends State<AboutUs> {
           //   ),
           // ),
           const Spacer(),
-          Center(
-            child: ElevatedButton(
+          SizedBox(
+            child: Center(
+              child: ElevatedButton(
                 style:
                     ElevatedButton.styleFrom(fixedSize: Size(width - 50, 50)),
                 onPressed: () async {
@@ -168,11 +172,14 @@ class AboutUsState extends State<AboutUs> {
                               builder: (_) => const LoginScreen()),
                           (route) => false));
                 },
-                child: const Text("Logout")),
+                child: Text(translation(context).logout),
+              ),
+              // const SizedBox(
+              //   height: 35,
+              // )
+              //  height: 35,
+            ),
           ),
-          const SizedBox(
-            height: 20,
-          )
         ],
       ),
     );
@@ -222,7 +229,7 @@ class Titlebar extends StatelessWidget {
             height: 10,
           ),
           Text(
-            'Contact Us',
+            translation(context).contactus,
             style: GoogleFonts.varelaRound(
                 fontSize: 36, color: Colors.white, fontWeight: FontWeight.w700),
           )

@@ -18,7 +18,7 @@ class _TipsCardState extends State<TipsCard> {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.0),
-          color: Colors.green,
+          color: Color.fromARGB(255, 211, 156, 101),
         ),
         child: ExpansionTile(
           title: Text(

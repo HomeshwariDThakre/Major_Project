@@ -92,7 +92,7 @@ class _TipsState extends State<Tips> {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.0),
-          color: Colors.green,
+          color: Color(0xffB39CD0),
         ),
         child: ExpansionTile(
           title: Text(
@@ -100,7 +100,7 @@ class _TipsState extends State<Tips> {
             style: GoogleFonts.poppins(
               fontSize: 20.0,
               //fontWeight: FontWeight.bold,
-              color: Colors.white,
+              color: Colors.black,
             ),
           ),
           children: <Widget>[
@@ -125,7 +125,7 @@ class _TipsState extends State<Tips> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green.shade200,
+      backgroundColor: Color(0xffFEF6FF),
       body: RefreshIndicator(
         onRefresh: () => callApi(),
         child: SafeArea(

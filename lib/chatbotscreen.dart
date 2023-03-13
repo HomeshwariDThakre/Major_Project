@@ -51,6 +51,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart';
 
+import 'classes/language_constants.dart';
+
 class Helper extends StatefulWidget {
   const Helper({super.key});
 
@@ -87,19 +89,19 @@ class HelperState extends State<Helper> {
                 Padding(
                   padding: const EdgeInsets.all(10),
                   child: Container(
-                    width: 300,
+                    width: 295,
                     height: 50,
                     decoration: const BoxDecoration(
-                      color: Colors.green,
+                      color: Color(0xff00755B),
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(25),
                           bottomRight: Radius.circular(25)),
                     ),
                     child: Center(
                       child: Text(
-                        'What Type of Crop are you growing?',
+                        (translation(context).aquestion),
                         style: GoogleFonts.poppins(
-                            color: Colors.white, fontSize: 16),
+                            color: Colors.white, fontSize: 15),
                       ),
                     ),
                   ),
@@ -121,14 +123,14 @@ class HelperState extends State<Helper> {
                   padding: const EdgeInsets.all(5),
                   child: DropdownButton<int>(
                       value: typeofcrop,
-                      items: const [
+                      items: [
                         DropdownMenuItem(
                           value: 0,
-                          child: Text("Food Crops"),
+                          child: Text(translation(context).foodcrops),
                         ),
                         DropdownMenuItem(
                           value: 1,
-                          child: Text("Cash Crops"),
+                          child: Text(translation(context).cashcrops),
                         ),
                       ],
                       onChanged: (int? value) {
@@ -149,7 +151,7 @@ class HelperState extends State<Helper> {
                     count = 2;
                     setState(() {});
                   },
-                  child: const Text('OK'),
+                  child: Text(translation(context).ok),
                 )),
           )
         ],
@@ -174,19 +176,19 @@ class HelperState extends State<Helper> {
                 Padding(
                   padding: const EdgeInsets.all(10),
                   child: Container(
-                    width: 300,
+                    width: 295,
                     height: 50,
                     decoration: const BoxDecoration(
-                      color: Colors.green,
+                      color: Color(0xff00755B),
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(25),
                           bottomRight: Radius.circular(25)),
                     ),
                     child: Center(
                       child: Text(
-                        'What Type of Soil are you using?',
+                        (translation(context).bquestion),
                         style: GoogleFonts.poppins(
-                            color: Colors.white, fontSize: 16),
+                            color: Colors.white, fontSize: 15),
                       ),
                     ),
                   ),
@@ -208,14 +210,14 @@ class HelperState extends State<Helper> {
                   padding: const EdgeInsets.all(8.0),
                   child: DropdownButton<int>(
                       value: soiltype,
-                      items: const [
+                      items: [
                         DropdownMenuItem(
                           value: 0,
-                          child: Text("Alluvial Soil"),
+                          child: Text(translation(context).alluvial_soil),
                         ),
                         DropdownMenuItem(
                           value: 1,
-                          child: Text("Others(Red,Black etc)"),
+                          child: Text(translation(context).others),
                         ),
                       ],
                       onChanged: (int? value) {
@@ -236,7 +238,7 @@ class HelperState extends State<Helper> {
                     count = 3;
                     setState(() {});
                   },
-                  child: const Text('OK'),
+                  child: Text(translation(context).ok),
                 )),
           )
         ],
@@ -261,19 +263,19 @@ class HelperState extends State<Helper> {
                 Padding(
                   padding: const EdgeInsets.all(10),
                   child: Container(
-                    width: 300,
+                    width: 295,
                     height: 50,
                     decoration: const BoxDecoration(
-                      color: Colors.green,
+                      color: Color(0xff00755B),
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(25),
                           bottomRight: Radius.circular(25)),
                     ),
                     child: Center(
                       child: Text(
-                        'Do you use pesticides?',
+                        (translation(context).cquestion),
                         style: GoogleFonts.poppins(
-                            color: Colors.white, fontSize: 16),
+                            color: Colors.white, fontSize: 15),
                       ),
                     ),
                   ),
@@ -287,7 +289,7 @@ class HelperState extends State<Helper> {
               padding: const EdgeInsets.all(10),
               child: Container(
                 height: 50,
-                width: 150,
+                width: 195,
                 decoration: BoxDecoration(
                     color: Colors.grey[300],
                     borderRadius: BorderRadius.circular(15)),
@@ -301,18 +303,18 @@ class HelperState extends State<Helper> {
                         borderRadius: BorderRadius.circular(15)),
                     child: DropdownButton<int>(
                         value: pesticideuse,
-                        items: const [
+                        items: [
                           DropdownMenuItem(
                             value: 0,
-                            child: Text("Never"),
+                            child: Text(translation(context).never),
                           ),
                           DropdownMenuItem(
                             value: 1,
-                            child: Text("Previously Used"),
+                            child: Text(translation(context).previously_used),
                           ),
                           DropdownMenuItem(
                             value: 2,
-                            child: Text("Currently Using"),
+                            child: Text(translation(context).currently_using),
                           ),
                         ],
                         onChanged: (int? value) {
@@ -334,7 +336,7 @@ class HelperState extends State<Helper> {
                     count = 4;
                     setState(() {});
                   },
-                  child: const Text('OK'),
+                  child: Text(translation(context).ok),
                 )),
           )
         ],
@@ -359,19 +361,19 @@ class HelperState extends State<Helper> {
                 Padding(
                   padding: const EdgeInsets.all(10),
                   child: Container(
-                    width: 300,
+                    width: 295,
                     height: 50,
                     decoration: const BoxDecoration(
-                      color: Colors.green,
+                      color: Color(0xff00755B),
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(25),
                           bottomRight: Radius.circular(25)),
                     ),
                     child: Center(
                       child: Text(
-                        'Pesticide count in a week? (0-100)',
+                        translation(context).dquestion,
                         style: GoogleFonts.poppins(
-                            color: Colors.white, fontSize: 16),
+                            color: Colors.white, fontSize: 15),
                       ),
                     ),
                   ),
@@ -408,7 +410,7 @@ class HelperState extends State<Helper> {
                     count = 5;
                     setState(() {});
                   },
-                  child: const Text('OK'),
+                  child: Text(translation(context).ok),
                 )),
           )
         ],
@@ -433,19 +435,19 @@ class HelperState extends State<Helper> {
                 Padding(
                   padding: const EdgeInsets.all(10),
                   child: Container(
-                    width: 300,
+                    width: 295,
                     height: 50,
                     decoration: const BoxDecoration(
-                      color: Colors.green,
+                      color: Color(0xff00755B),
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(25),
                           bottomRight: Radius.circular(25)),
                     ),
                     child: Center(
                       child: Text(
-                        '   How many weeks did you use pesticide?',
+                        translation(context).equestion,
                         style: GoogleFonts.poppins(
-                            color: Colors.white, fontSize: 16),
+                            color: Colors.white, fontSize: 14),
                       ),
                     ),
                   ),
@@ -490,10 +492,10 @@ class HelperState extends State<Helper> {
                   child: Container(
                     height: 40,
                     width: 350,
-                    color: Colors.green,
+                    color: Color(0xff00755B),
                     child: Center(
                       child: Text(
-                        'Submit',
+                        translation(context).submit,
                         style: GoogleFonts.poppins(
                             color: Colors.white, fontSize: 14),
                       ),
@@ -508,7 +510,7 @@ class HelperState extends State<Helper> {
     var height = size.height;
 
     return Scaffold(
-      backgroundColor: Colors.green,
+      backgroundColor: Color(0xff00755B),
       body: (isLoading == false && result == false)
           ? Column(
               children: [
@@ -531,7 +533,7 @@ class HelperState extends State<Helper> {
                           height: 10,
                         ),
                         Text(
-                          'Kisan Sahayak',
+                          translation(context).kisanshayak,
                           style: GoogleFonts.poppins(
                               color: Colors.white, fontSize: 32),
                         )
@@ -544,7 +546,7 @@ class HelperState extends State<Helper> {
                       height: height - 275 - 80,
                       width: size.width,
                       decoration: const BoxDecoration(
-                          color: Colors.white,
+                          color: Color(0xffFEF6FF),
                           borderRadius:
                               BorderRadius.only(topLeft: Radius.circular(40))),
                       child: ListView.builder(
@@ -556,7 +558,7 @@ class HelperState extends State<Helper> {
                       )),
                 ),
                 Container(
-                  color: Colors.white,
+                  color: Color(0xffFEF6FF),
                   height: 80,
                 ),
               ],
@@ -566,13 +568,13 @@ class HelperState extends State<Helper> {
               : Container(
                   height: height,
                   width: size.width,
-                  color: Colors.white,
+                  color: Color(0xffFEF6FF),
                   child: Column(
                     children: [
                       Container(
                           height: 250,
                           width: size.width,
-                          color: Colors.green,
+                          color: Color(0xff00755B),
                           child: Column(
                             children: [
                               const SizedBox(
@@ -593,14 +595,14 @@ class HelperState extends State<Helper> {
                                   ),
                                   Expanded(
                                       child: Text(
-                                    'Kisan Sahayak has calculated and here are the results!',
+                                    translation(context).fquestion,
                                     style: GoogleFonts.poppins(
-                                        fontSize: 16, color: Colors.white),
+                                        fontSize: 14, color: Colors.white),
                                   )),
                                 ],
                               ),
                               Text(
-                                'Results',
+                                translation(context).results,
                                 style: GoogleFonts.poppins(
                                     fontSize: 36, color: Colors.white),
                               ),
@@ -672,11 +674,11 @@ class HelperState extends State<Helper> {
 
   String getText(int ans) {
     if (ans == 0) {
-      return "Your crop is Healthy!!";
+      return translation(context).ans;
     } else if (ans == 1) {
-      return "Your crop may be damaged";
+      return translation(context).answer;
     } else {
-      return "Your crop is damaged due to overuse of pesticide";
+      return translation(context).answera;
     }
   }
 }

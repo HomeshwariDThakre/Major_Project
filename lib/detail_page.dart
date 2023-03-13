@@ -2,7 +2,7 @@ import 'package:bhoomi_seva/model/soilmodel.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart'; 
 class DetailPage extends StatefulWidget {
   final SoilDataModel detail;
   const DetailPage({super.key, required this.detail});
@@ -17,8 +17,9 @@ class _DetailPageState extends State<DetailPage> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: Colors.brown[200],
+      backgroundColor: Color(0xffFBEAFF),
       appBar: AppBar(
+        
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back_ios,
