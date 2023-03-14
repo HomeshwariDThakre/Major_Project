@@ -225,6 +225,13 @@ class WeatherState extends State<Weather> {
   }
 
   String getWeatherIcon(int condition) {
+    Text(translation(context).storm);
+    Text(translation(context).smoke);
+    Text(translation(context).rainy);
+    Text(translation(context).snow);
+    Text(translation(context).clear);
+    Text(translation(context).cloudy);
+    Text(translation(context).unknown);
     if (condition < 300) {
       return 'assets/ic_storm_weather.png';
     } else if (condition < 400) {
@@ -242,13 +249,6 @@ class WeatherState extends State<Weather> {
     } else {
       return 'assets/ic_unknown.png';
     }
-    Text(translation(context).storm);
-    Text(translation(context).smoke);
-    Text(translation(context).rainy);
-    Text(translation(context).snow);
-    Text(translation(context).clear);
-    Text(translation(context).cloudy);
-    Text(translation(context).unknown);
   }
 
   Future<Position> _determinePosition() async {
@@ -287,12 +287,12 @@ class WeatherState extends State<Weather> {
           x['current']['humidity'],
           x['current']['weather'][0]['id'],
           x['current']['pressure']));
-      var y = x['daily'];
+      dynamic y = x['daily'];
       if (kDebugMode) {
         print(y);
       }
       List<Forecast> z = [];
-      for (var i = 1; i < 5; i++) {
+      for (dynamic i = 1; i < 5; i++) {
         //print(y[i]['weather'][0]['id']);
         z.add(Forecast(
             y[i]['dt'],
@@ -312,24 +312,24 @@ class WeatherState extends State<Weather> {
 }
 
 class Current {
-  var temp;
-  var pressure;
-  var humidity;
-  var weather;
-  var id;
-  var desc;
+  dynamic temp;
+  dynamic pressure;
+  dynamic humidity;
+  dynamic weather;
+  dynamic id;
+  dynamic desc;
   Current(this.temp, this.desc, this.weather, this.humidity, this.id,
       this.pressure);
 }
 
 class Forecast {
-  var dt;
-  var max;
+  dynamic dt;
+  dynamic max;
 // ignore: prefer_typing_uninitialized_variables
-  var humidity;
-  var min;
+  dynamic humidity;
+  dynamic min;
 // ignore: prefer_typing_uninitialized_variables
-  var weather;
-  var desc;
+  dynamic weather;
+  dynamic desc;
   Forecast(this.dt, this.humidity, this.max, this.min, this.weather, this.desc);
 }

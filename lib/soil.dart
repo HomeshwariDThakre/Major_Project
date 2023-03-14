@@ -1,3 +1,4 @@
+import 'package:bhoomi_seva/data/userdata.dart';
 import 'package:bhoomi_seva/model/soilmodel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -13,10 +14,9 @@ class SoilList extends StatefulWidget {
 }
 
 class _SoilListState extends State<SoilList> {
-
   bool loader = true;
-  
-   List soilData = [];
+
+  List soilData = [];
 
   List<Soil> soils = [
     Soil(
@@ -71,10 +71,25 @@ class _SoilListState extends State<SoilList> {
   ];
 
   Future callApi() async {
+    String collectname = "SoilData";
+    switch (selectedLan) {
+      case "hi":
+        collectname = "SoilDataHindi";
+        break;
+      case "mr":
+        collectname = "SoilDataMarathi";
+        break;
+      default:
+        collectname = "SoilData";
+    }
     setState(() {
       loader = true;
     });
-    await FirebaseFirestore.instance.collection("SoilData").get().then((value) {
+    soilData.clear();
+    await FirebaseFirestore.instance
+        .collection(collectname)
+        .get()
+        .then((value) {
       for (var doc in value.docs) {
         soilData.add(doc.data());
       }
@@ -97,8 +112,8 @@ class _SoilListState extends State<SoilList> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold( 
-      backgroundColor: Color(0xffFEF6FF),
+    return Scaffold(
+      backgroundColor: const Color(0xffFEF6FF),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),

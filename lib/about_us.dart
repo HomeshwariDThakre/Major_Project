@@ -21,7 +21,7 @@ class AboutUsState extends State<AboutUs> {
 
     // var color;
     return Scaffold(
-      backgroundColor: Color(0xffFEF6FF),
+      backgroundColor: const Color(0xffFEF6FF),
       body: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -113,6 +113,31 @@ class AboutUsState extends State<AboutUs> {
                 ),
                 Text(
                   translation(context).nationalhelpline,
+                  style: GoogleFonts.poppins(fontSize: 16, color: Colors.black),
+                ),
+                InkWell(
+                  onTap: () => launchUrlString("tel://1800-120-4049"),
+                  child: const Text(
+                    '1800-120-4049',
+                    style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        color: Colors.blue,
+                        fontSize: 17),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+            child: Row(
+              children: [
+                const Icon(
+                  Icons.phone,
+                  color: Colors.green,
+                ),
+                Text(
+                  "Selected",
                   style: GoogleFonts.poppins(fontSize: 16, color: Colors.black),
                 ),
                 InkWell(

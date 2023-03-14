@@ -1,11 +1,11 @@
 import 'package:bhoomi_seva/classes/language_constants.dart';
+import 'package:bhoomi_seva/data/userdata.dart';
 import 'package:bhoomi_seva/splashscreen.dart';
 // import 'package:bhoomi_seva/weather.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'firebase_options.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 //import 'package:shared_preferences/shared_preferences.dart';
 
@@ -43,6 +43,7 @@ class _MyAppState extends State<MyApp> {
   setLocale(Locale locale) {
     setState(() {
       _locale = locale;
+      selectedLan = locale.toString();
     });
   }
   //  @override
@@ -50,8 +51,6 @@ class _MyAppState extends State<MyApp> {
   //   getLocale().then((locale) => null);
   //   super.didChangeDependencies();
 
-
-  
   @override
   void didChangeDependencies() {
     getLocale().then((locale) => setLocale(locale));
@@ -66,7 +65,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: 'Bhoomi_Seva',
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.purple,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       localizationsDelegates: AppLocalizations.localizationsDelegates,

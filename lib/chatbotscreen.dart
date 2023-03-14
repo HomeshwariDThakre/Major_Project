@@ -47,6 +47,7 @@
 
 import 'dart:math';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart';
@@ -492,7 +493,7 @@ class HelperState extends State<Helper> {
                   child: Container(
                     height: 40,
                     width: 350,
-                    color: Color(0xff00755B),
+                    color: const Color(0xff00755B),
                     child: Center(
                       child: Text(
                         translation(context).submit,
@@ -510,7 +511,7 @@ class HelperState extends State<Helper> {
     var height = size.height;
 
     return Scaffold(
-      backgroundColor: Color(0xff00755B),
+      backgroundColor: const Color(0xff00755B),
       body: (isLoading == false && result == false)
           ? Column(
               children: [
@@ -558,7 +559,7 @@ class HelperState extends State<Helper> {
                       )),
                 ),
                 Container(
-                  color: Color(0xffFEF6FF),
+                  color: const Color(0xffFEF6FF),
                   height: 80,
                 ),
               ],
@@ -568,13 +569,13 @@ class HelperState extends State<Helper> {
               : Container(
                   height: height,
                   width: size.width,
-                  color: Color(0xffFEF6FF),
+                  color: const Color(0xffFEF6FF),
                   child: Column(
                     children: [
                       Container(
                           height: 250,
                           width: size.width,
-                          color: Color(0xff00755B),
+                          color: const Color(0xff00755B),
                           child: Column(
                             children: [
                               const SizedBox(
@@ -648,19 +649,21 @@ class HelperState extends State<Helper> {
       a3 = 1;
     }
     // print(pesticideweek);
-    final url = Uri.parse(
+    final Uri url = Uri.parse(
         'https://plant-health.onrender.com/predict?a=1575&b=$typeofcrop&c=$soiltype&d=$pesticidecount&e=$pesticideweek&f=${random.nextInt(50)}&g=$a1&h=$a2&i=$a3&k=0&l=0&m=1');
     // print(url);
-    final headers = {"Content-type": "application/json"};
-    final json =
-        '{"a"=${random.nextInt(4097 - 150) + 150}&"b"=$typeofcrop&"c"=$soiltype&"d"=$pesticidecount&"e"=$pesticideweek&"f"=${random.nextInt(50)}&"g"=1&"h"=2&"i"=3&"k=1&"l"=2&"m"=3}';
+    // final Map<dynamic, dynamic> headers = {"Content-type": "application/json"};
+    // final String json =
+    // '{"a"=${random.nextInt(4097 - 150) + 150}&"b"=$typeofcrop&"c"=$soiltype&"d"=$pesticidecount&"e"=$pesticideweek&"f"=${random.nextInt(50)}&"g"=1&"h"=2&"i"=3&"k=1&"l"=2&"m"=3}';
     final response = await get(
       url,
     );
-    print('Status code: ${response.statusCode}');
-    // http: //suvoo.pythonanywhere.com/predict?a=1575&b=$typeofcrop&c=$soiltype&d=$pesticidecount&e=$pesticideweek&f=${random.nextInt(50)}&g=$a1&h=$a2&i=$a3&k=0&l=0&m=1
-    print('Body: ${response.body}');
-    print(int.parse(response.body[1]));
+    if (kDebugMode) {
+      print('Status code: ${response.statusCode}');
+      // http: //suvoo.pythonanywhere.com/predict?a=1575&b=$typeofcrop&c=$soiltype&d=$pesticidecount&e=$pesticideweek&f=${random.nextInt(50)}&g=$a1&h=$a2&i=$a3&k=0&l=0&m=1
+      print('Body: ${response.body}');
+      print(int.parse(response.body[1]));
+    }
     return int.parse(response.body[1]);
   }
 

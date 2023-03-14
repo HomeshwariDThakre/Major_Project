@@ -54,18 +54,18 @@ class KisanRakshakState extends State<KisanRakshak> {
   Widget build(BuildContext context) {
     List colors = [
       //
-      Color(0xffFEF6FF),
-      Color(0xffFEF6FF),
+      const Color(0xffFEF6FF),
+      const Color(0xffFEF6FF),
       weatherColour,
-      Color(0xffFEF6FF),
-      Color(0xffFEF6FF),
+      const Color(0xffFEF6FF),
+      const Color(0xffFEF6FF),
     ];
     return Scaffold(
       backgroundColor: colors[currentIndex],
       body: _pages[currentIndex],
       bottomNavigationBar: CurvedNavigationBar(
         index: currentIndex,
-        color: Color(0xffB39CD0),
+        color: const Color(0xffB39CD0),
         backgroundColor: Colors.transparent,
         items: const <Widget>[
           Icon(FontAwesomeIcons.gitlab, size: 30),
@@ -216,7 +216,7 @@ class BNBCustomPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     Paint paint = Paint()
-      ..color = Color(0xffFEF6FF)
+      ..color = const Color(0xffFEF6FF)
       ..style = PaintingStyle.fill;
 
     Path path = Path();
