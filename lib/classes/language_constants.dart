@@ -2,35 +2,35 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-const String LANGUAGE_CODE = 'languageCode';
+const String lANGUAGECODE = 'languageCode';
 
 //languages code
-const String ENGLISH = 'en';
-const String HINDI = 'hi';
-const String MARATHI = 'mr';
+const String english = 'en';
+const String hindi = 'hi';
+const String marathi = 'mr';
 
 Future<Locale> setLocale(String languageCode) async {
-  SharedPreferences _prefs = await SharedPreferences.getInstance();
-  await _prefs.setString(LANGUAGE_CODE, languageCode);
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  await prefs.setString(lANGUAGECODE, languageCode);
   return _locale(languageCode);
 }
 
 Future<Locale> getLocale() async {
-  SharedPreferences _prefs = await SharedPreferences.getInstance();
-  String languageCode = _prefs.getString(LANGUAGE_CODE) ?? ENGLISH;
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String languageCode = prefs.getString(lANGUAGECODE) ?? english;
   return _locale(languageCode);
 }
 
 Locale _locale(String languageCode) {
   switch (languageCode) {
-    case ENGLISH:
-      return const Locale(ENGLISH, '');
-    case HINDI:
-      return const Locale(HINDI, "");
-    case MARATHI:
-      return const Locale(MARATHI, "");
+    case english:
+      return const Locale(english, '');
+    case hindi:
+      return const Locale(hindi, "");
+    case marathi:
+      return const Locale(marathi, "");
     default:
-      return const Locale(ENGLISH, '');
+      return const Locale(english, '');
   }
 }
 

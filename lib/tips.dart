@@ -1,4 +1,4 @@
-import 'package:bhoomi_seva/classes/language_constants.dart';
+import 'package:bhoomi_seva/data/userdata.dart';
 import 'package:bhoomi_seva/model/tipsmodel.dart';
 import 'package:bhoomi_seva/tipscard.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -17,13 +17,22 @@ class _TipsState extends State<Tips> {
   List tipsdata = [];
 
   Future callApi() async {
+    String collectname = "Tips";
+    switch (selectedLan) {
+      case "hi":
+        collectname = "TipsHindi";
+        break;
+      case "mr":
+        collectname = "TipsMarathi";
+        break;
+      default:
+        collectname = "Tips";
+    }
+
     setState(() {
       loader = true;
     });
-    await FirebaseFirestore.instance
-        .collection(translation(context).tips)
-        .get()
-        .then((value) {
+    await FirebaseFirestore.instance.collection("Tips").get().then((value) {
       for (var doc in value.docs) {
         tipsdata.add(doc.data());
       }
@@ -97,7 +106,7 @@ class _TipsState extends State<Tips> {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.0),
-          color: Color(0xffB39CD0),
+          color: const Color(0xffB39CD0),
         ),
         child: ExpansionTile(
           title: Text(
@@ -130,7 +139,7 @@ class _TipsState extends State<Tips> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffFEF6FF),
+      backgroundColor: const Color(0xffFEF6FF),
       body: RefreshIndicator(
         onRefresh: () => callApi(),
         child: SafeArea(
