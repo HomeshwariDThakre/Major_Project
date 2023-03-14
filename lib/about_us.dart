@@ -128,31 +128,7 @@ class AboutUsState extends State<AboutUs> {
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-            child: Row(
-              children: [
-                const Icon(
-                  Icons.phone,
-                  color: Colors.green,
-                ),
-                Text(
-                  "Selected",
-                  style: GoogleFonts.poppins(fontSize: 16, color: Colors.black),
-                ),
-                InkWell(
-                  onTap: () => launchUrlString("tel://1800-120-4049"),
-                  child: const Text(
-                    '1800-120-4049',
-                    style: TextStyle(
-                        decoration: TextDecoration.underline,
-                        color: Colors.blue,
-                        fontSize: 17),
-                  ),
-                ),
-              ],
-            ),
-          ),
+
           //  Padding(
           //      padding: const EdgeInsets.fromLTRB(10, 0,0,10),
           //      child: Card(

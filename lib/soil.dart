@@ -1,4 +1,5 @@
 import 'package:bhoomi_seva/classes/language_constants.dart';
+import 'package:bhoomi_seva/data/userdata.dart';
 import 'package:bhoomi_seva/model/soilmodel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -14,10 +15,9 @@ class SoilList extends StatefulWidget {
 }
 
 class _SoilListState extends State<SoilList> {
-
   bool loader = true;
-  
-   List soilData = [];
+
+  List soilData = [];
 
   List<Soil> soils = [
     Soil(
@@ -72,10 +72,25 @@ class _SoilListState extends State<SoilList> {
   ];
 
   Future callApi() async {
+    String collectname = "SoilData";
+    switch (selectedLan) {
+      case "hi":
+        collectname = "SoilDataHindi";
+        break;
+      case "mr":
+        collectname = "SoilDataMarathi";
+        break;
+      default:
+        collectname = "SoilData";
+    }
     setState(() {
       loader = true;
+      soilData.clear();
     });
-    await FirebaseFirestore.instance.collection("SoilData").get().then((value) {
+    await FirebaseFirestore.instance
+        .collection(collectname)
+        .get()
+        .then((value) {
       for (var doc in value.docs) {
         soilData.add(doc.data());
       }
@@ -98,38 +113,41 @@ class _SoilListState extends State<SoilList> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold( 
-      backgroundColor: Color(0xffFEF6FF),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Text(
-                  translation(context).soilpedia,
-                  style: GoogleFonts.poppins(
-                      fontSize: 36,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w500),
+    return Scaffold(
+      backgroundColor: const Color(0xffFEF6FF),
+      body: RefreshIndicator(
+        onRefresh: () async => await callApi(),
+        child: SafeArea(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Text(
+                    translation(context).soilpedia,
+                    style: GoogleFonts.poppins(
+                        fontSize: 36,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500),
+                  ),
                 ),
-              ),
-              loader
-                  ? const Center(child: CircularProgressIndicator())
-                  : Center(
-                      child: ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: soilData.length,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemBuilder: (context, index) {
-                            SoilDataModel soil =
-                                SoilDataModel.from(soilData[index]);
-                            return SoilCard(soil: soil);
-                          }),
-                    ),
-            ],
+                loader
+                    ? const Center(child: CircularProgressIndicator())
+                    : Center(
+                        child: ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: soilData.length,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemBuilder: (context, index) {
+                              SoilDataModel soil =
+                                  SoilDataModel.from(soilData[index]);
+                              return SoilCard(soil: soil);
+                            }),
+                      ),
+              ],
+            ),
           ),
         ),
       ),

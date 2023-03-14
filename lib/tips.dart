@@ -31,8 +31,12 @@ class _TipsState extends State<Tips> {
 
     setState(() {
       loader = true;
+      tipsdata.clear();
     });
-    await FirebaseFirestore.instance.collection("Tips").get().then((value) {
+    await FirebaseFirestore.instance
+        .collection(collectname)
+        .get()
+        .then((value) {
       for (var doc in value.docs) {
         tipsdata.add(doc.data());
       }
