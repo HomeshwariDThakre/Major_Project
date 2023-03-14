@@ -1,6 +1,6 @@
 {
     "loginscreen": "Login Screen",
-    "welcome": "Welcome To Bho🌍mi Seva App",
+    "welcome": "WELCOME TO                  BHO🌍MI SEVA             APP",
     "google": "Google Sign in",
     "soilpedia": "Soilpedia",
     "tips": "Tips for Good Farming",
@@ -45,5 +45,10 @@
     "mostlycloudy": "Mostly Cloudy",
     "clear": "Clear",
     "cloudy": "Cloudy",
-    "unknown": "Unknown"
+    "unknown": "Unknown",
+
+    "about": "About",
+    "foundin": "Found in",
+    "characteristics": "Characteristics",
+    "suitable": "Suitable Crops"
 }

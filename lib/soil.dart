@@ -1,3 +1,4 @@
+import 'package:bhoomi_seva/classes/language_constants.dart';
 import 'package:bhoomi_seva/model/soilmodel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -108,7 +109,7 @@ class _SoilListState extends State<SoilList> {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Text(
-                  'Soilpedia',
+                  translation(context).soilpedia,
                   style: GoogleFonts.poppins(
                       fontSize: 36,
                       color: Colors.black,

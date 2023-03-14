@@ -161,18 +161,21 @@ class AboutUsState extends State<AboutUs> {
           const Spacer(),
           SizedBox(
             child: Center(
-              child: ElevatedButton(
-                style:
-                    ElevatedButton.styleFrom(fixedSize: Size(width - 50, 50)),
-                onPressed: () async {
-                  await logOut().whenComplete(() =>
-                      Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => const LoginScreen()),
-                          (route) => false));
-                },
-                child: Text(translation(context).logout),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 50),
+                child: ElevatedButton(
+                  style:
+                      ElevatedButton.styleFrom(fixedSize: Size(width - 50, 50)),
+                  onPressed: () async {
+                    await logOut().whenComplete(() =>
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => const LoginScreen()),
+                            (route) => false));
+                  },
+                  child: Text(translation(context).logout),
+                ),
               ),
               // const SizedBox(
               //   height: 35,

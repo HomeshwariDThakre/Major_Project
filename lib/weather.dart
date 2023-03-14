@@ -6,6 +6,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart';
 import 'package:intl/intl.dart';
+import 'package:tbib_splash_screen/splash_screen_view.dart';
 
 class Weather extends StatefulWidget {
   const Weather({super.key});
@@ -33,10 +34,14 @@ class WeatherState extends State<Weather> {
           future: getweather(),
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
-              return const Center(
-                  child: CircularProgressIndicator(
-                color: Colors.green,
-              ));
+              return Center(
+                child: Lottie.asset("animation/weather.json",
+                    height: 150, width: 240),
+              );
+              // Center(
+              //     child: CircularProgressIndicator(
+              //   color: Colors.green,
+              // ));
             } else {
               //print(snapshot.data);
               return Container(

@@ -1,8 +1,10 @@
+import 'package:bhoomi_seva/classes/language_constants.dart';
 import 'package:bhoomi_seva/model/tipsmodel.dart';
 import 'package:bhoomi_seva/tipscard.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tbib_splash_screen/splash_screen_view.dart';
 
 class Tips extends StatefulWidget {
   const Tips({super.key});
@@ -18,7 +20,10 @@ class _TipsState extends State<Tips> {
     setState(() {
       loader = true;
     });
-    await FirebaseFirestore.instance.collection("Tips").get().then((value) {
+    await FirebaseFirestore.instance
+        .collection(translation(context).tips)
+        .get()
+        .then((value) {
       for (var doc in value.docs) {
         tipsdata.add(doc.data());
       }
@@ -146,8 +151,9 @@ class _TipsState extends State<Tips> {
                 ),
 
                 loader
-                    ? const Center(
-                        child: CircularProgressIndicator(),
+                    ? Center(
+                        child: Lottie.asset("animation/soil.json",
+                            height: 500, width: 590),
                       )
                     : ListView.builder(
                         physics: const NeverScrollableScrollPhysics(),

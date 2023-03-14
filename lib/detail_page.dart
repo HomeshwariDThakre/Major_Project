@@ -1,8 +1,10 @@
+import 'package:bhoomi_seva/classes/language_constants.dart';
 import 'package:bhoomi_seva/model/soilmodel.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart'; 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class DetailPage extends StatefulWidget {
   final SoilDataModel detail;
   const DetailPage({super.key, required this.detail});
@@ -19,7 +21,6 @@ class _DetailPageState extends State<DetailPage> {
     return Scaffold(
       backgroundColor: Color(0xffFBEAFF),
       appBar: AppBar(
-        
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back_ios,
@@ -91,7 +92,7 @@ class _DetailPageState extends State<DetailPage> {
                     children: [
                       ListTile(
                         title: Text(
-                          'About:',
+                          translation(context).about,
                           style: GoogleFonts.poppins(
                             color: Colors.black,
                             fontSize: 20.0,
@@ -124,7 +125,7 @@ class _DetailPageState extends State<DetailPage> {
                     children: [
                       ListTile(
                         title: Text(
-                          'Found in:',
+                          translation(context).foundin,
                           style: GoogleFonts.poppins(
                             color: Colors.black,
                             fontSize: 20.0,
@@ -156,7 +157,7 @@ class _DetailPageState extends State<DetailPage> {
                     children: [
                       ListTile(
                         title: Text(
-                          'Characteristics:',
+                          translation(context).characteristics,
                           style: GoogleFonts.poppins(
                             color: Colors.black,
                             fontSize: 20.0,
@@ -188,7 +189,7 @@ class _DetailPageState extends State<DetailPage> {
                     children: [
                       ListTile(
                         title: Text(
-                          'Suitable Crops:',
+                          translation(context).characteristics,
                           style: GoogleFonts.poppins(
                             color: Colors.black,
                             fontSize: 20.0,
